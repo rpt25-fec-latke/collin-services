@@ -41,14 +41,14 @@ db.on('error', console.error.bind(console, 'mongoose connection error:'));
 db.once('open', function() {
   console.log('successfully connected to mongoose');
   (() => {
-    let seeder = 0;
-    while(seeder !== 100) {
+    let seeder = 1;
+    while(seeder !== 101) {
       let gameTitle = faker.random.words().toUpperCase();
       let randomIndex = Math.floor(Math.random() * 4);
       let reviews = ['Very Positive', 'Positive', 'Very Negative', 'Negative'];
 
       let dataFormat = {
-        game_id: faker.random.uuid(),
+        game_id: seeder,
         category_tree: {
           genres: {
             RPG: [gameTitle]
@@ -72,8 +72,9 @@ db.once('open', function() {
       seeder++;
     }
 
-    if(seeder === 100) {
+    if(seeder === 101) {
       console.log('Seeding Complete');
+
     }
 
   })()

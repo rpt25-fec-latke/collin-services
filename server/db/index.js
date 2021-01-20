@@ -1,10 +1,19 @@
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/gameinfo', {useNewUrlParser: true, useUnifiedTopology: true});
-const db = mongoose.connection;
+const connection = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'mongoose connection error:'));
+connection.on('error', console.error.bind(console, 'mongoose connection error:'));
 
-db.once('open', function() {
+connection.once('open', function() {
   console.log('successfully connected to mongoose');
 });
+
+module.exports.getInfo = (gameId, callback) => {
+  console.log(gameId);
+  connection.db.collection('gameCarouselInfo', function(err, collection) {
+      callback(null, collection.find({}).toArray());
+   });
+
+}
+
 

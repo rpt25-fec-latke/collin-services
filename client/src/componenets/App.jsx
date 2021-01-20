@@ -1,9 +1,11 @@
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import React, { useEffect } from 'react';
 
 const App = () => {
+  const [currentGameId, setGameId] = useState(1);
+
   useEffect(() => {
-    axios('/game_carousel_info')
+    axios.get(`/game_carousel_info?id=${currentGameId}`)
     .then(res => console.log(res))
     .catch(err => console.error(err));
   }, []);
