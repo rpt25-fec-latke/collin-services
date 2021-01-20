@@ -9,20 +9,22 @@
   },
   "scripts": {
     "start": "nodemon server/server.js",
-    "test": "jest",
-    "seeding": "node .server/db/seedscript.js",
+    "test": "jest --detectOpenHandles",
+    "seed": "node ./server/db/seedscript.js",
     "build": "webpack -w",
-    "dev-server": "webpack serve --mode development --port 3008"
+    "dev-server": "webpack serve --mode development --port 3008 --open"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "express": "^4.17.1",
     "mongoose": "^5.11.12",
     "morgan": "^1.10.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",

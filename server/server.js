@@ -12,6 +12,9 @@ app.use(bodyParser.json());
 app.use(morgan('tiny'));
 app.use(express.static('dist'));
 
+app.get('/game_carousel_info', (req, res) => {
+
+})
 
 const PORT = process.env.PORT || 3008;
 app.listen(PORT, () => {
