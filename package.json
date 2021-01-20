@@ -9,28 +9,34 @@
   },
   "scripts": {
     "start": "nodemon server/server.js",
-    "seeding": "node ./seedscript.js",
+    "test": "jest --detectOpenHandles",
+    "seed": "node ./server/db/seedscript.js",
     "build": "webpack -w",
-    "dev-server": "webpack serve --mode development --port 3008"
+    "dev-server": "webpack serve --mode development --port 3008 --open"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "express": "^4.17.1",
     "mongoose": "^5.11.12",
     "morgan": "^1.10.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@shelf/jest-mongodb": "^1.2.3",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "faker": "^5.1.0",
+    "jest": "^26.6.3",
+    "regenerator-runtime": "^0.13.7",
     "webpack": "^5.14.0",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.2"

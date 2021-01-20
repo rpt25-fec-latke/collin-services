@@ -4,7 +4,7 @@ mongoose.connect('mongodb://localhost/gameinfo', {useNewUrlParser: true, useUnif
 const db = mongoose.connection;
 
 
-const seedingScript = new mongoose.Schema({
+const gameCarouselInfo = new mongoose.Schema({
   game_id: {
     type: String,
     unique: true
@@ -27,13 +27,13 @@ const seedingScript = new mongoose.Schema({
   publisher: String,
   popular_tags: Array
 },
-{collection: 'seedingScript'});
+{collection: 'gameCarouselInfo'});
 
-const SeedingScript = mongoose.model('SeedingScript', seedingScript);
+const GameCarouselInfo = mongoose.model('GameCarouselInfo', gameCarouselInfo);
 
 
 const saveSeed = async(seed) => {
-  await new SeedingScript(seed).save().catch(err => console.log('ERROR', err));
+  await new GameCarouselInfo(seed).save().catch(err => console.log('ERROR', err));
 }
 
 db.on('error', console.error.bind(console, 'mongoose connection error:'));
