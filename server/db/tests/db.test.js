@@ -10,3 +10,7 @@ describe('Mongoose Setup', () => {
     expect(mongoose.connection.readyState).toEqual(1);
   });
 });
+
+afterAll(() => {
+  mongoose.connection.close();
+});
