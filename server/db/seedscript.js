@@ -1,18 +1,18 @@
 const faker = require('faker');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/gameinfo', {useNewUrlParser: true, useUnifiedTopology: true});
-const db = mongoose.connection;
 
+mongoose.connect('mongodb://localhost/gameinfo', { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
 
 const gameCarouselInfo = new mongoose.Schema({
   game_id: {
     type: String,
-    unique: true
+    unique: true,
   },
   category_tree: {
     genres: {
-      RPG: Array
-    }
+      RPG: Array,
+    },
   },
   game_title: String,
   video_photo_carousel: Array,
@@ -25,34 +25,33 @@ const gameCarouselInfo = new mongoose.Schema({
   release_date: Date,
   developer: String,
   publisher: String,
-  popular_tags: Array
+  popular_tags: Array,
 },
-{collection: 'gameCarouselInfo'});
+{ collection: 'gameCarouselInfo' });
 
 const GameCarouselInfo = mongoose.model('GameCarouselInfo', gameCarouselInfo);
 
-
 const saveSeed = async(seed) => {
-  await new GameCarouselInfo(seed).save().catch(err => console.log('ERROR', err));
-}
+  await new GameCarouselInfo(seed).save().catch((err) => console.log('ERROR', err));
+};
 
 db.on('error', console.error.bind(console, 'mongoose connection error:'));
 
-db.once('open', function() {
+db.once('open', () => {
   console.log('successfully connected to mongoose');
   (() => {
     let seeder = 1;
-    while(seeder !== 101) {
-      let gameTitle = faker.random.words().toUpperCase();
-      let randomIndex = Math.floor(Math.random() * 4);
-      let reviews = ['Very Positive', 'Positive', 'Very Negative', 'Negative'];
+    while (seeder !== 101) {
+      const gameTitle = faker.random.words().toUpperCase();
+      const randomIndex = Math.floor(Math.random() * 4);
+      const reviews = ['Very Positive', 'Positive', 'Very Negative', 'Negative'];
 
-      let dataFormat = {
+      const dataFormat = {
         game_id: seeder,
         category_tree: {
           genres: {
-            RPG: [gameTitle]
-          }
+            RPG: [gameTitle],
+          },
         },
         game_title: gameTitle,
         video_photo_carousel: [faker.image.imageUrl(), faker.image.imageUrl()],
@@ -65,20 +64,18 @@ db.once('open', function() {
         release_date: faker.date.between('2012-01-01', '2021-01-20'),
         developer: faker.company.companyName(),
         publisher: faker.company.companyName(),
-        popular_tags: [faker.company.catchPhraseNoun(), faker.company.catchPhraseNoun(), faker.company.catchPhrase()]
-      }
-
+        popular_tags: [
+          faker.company.catchPhraseNoun(),
+          faker.company.catchPhraseNoun(),
+          faker.company.catchPhrase(),
+        ],
+      };
       saveSeed(dataFormat);
       seeder++;
     }
 
-    if(seeder === 101) {
+    if (seeder === 101) {
       console.log('Seeding Complete');
-
     }
-
-  })()
+  })();
 });
-
-
-
