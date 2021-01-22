@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "nodemon server/server.js",
-    "test": "jest --detectOpenHandles",
+    "test": "jest --detectOpenHandles --passWithNoTests",
     "seed": "node ./server/db/seedscript.js",
     "build": "webpack -w",
     "dev-server": "webpack serve --mode development --port 3008 --open"

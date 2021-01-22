@@ -14,17 +14,11 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/game_carousel_info', (req, res) => {
   console.log('query', req.query.id);
-  db.getInfo(req.query.id, (err, dataRetrieval) => {
+  db.getInfo(req.query.id, (err, data) => {
     if(err) {
       res.send(500);
     } else {
-      dataRetrieval
-      .then((data) => {
-        res.json(data);
-      }).catch(err => {
-        console.log(err);
-        res.send(500);
-      })
+      res.json(data);
     }
   });
 

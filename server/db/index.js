@@ -9,9 +9,13 @@ connection.once('open', function() {
 });
 
 module.exports.getInfo = (gameId, callback) => {
-  console.log(gameId);
-  connection.db.collection('gameCarouselInfo', function(err, collection) {
-      callback(null, collection.find({}).toArray());
+
+  connection.db.collection('gameCarouselInfo', async(err, collection) => {
+    if(err) {
+      callback(err);
+    }
+    const data = await collection.find({}).toArray() //.exec()
+    callback(null, data);
    });
 
 }
