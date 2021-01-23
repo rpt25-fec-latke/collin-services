@@ -11,9 +11,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
-app.use(express.static(path.resolve(__dirname, 'client', 'dist')));
+app.use(express.static(path.resolve('client', 'dist')));
 
 app.get('/game_carousel_info', (req, res) => {
+  console.log('hi');
   console.log('query', req.query.id);
   db.getInfo(req.query.id, (err, data) => {
     if (err) {
