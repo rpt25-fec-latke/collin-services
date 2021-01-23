@@ -14,6 +14,7 @@ const gameCarouselInfo = new mongoose.Schema({
       genre_name: Array,
     },
   },
+  genre: String,
   game_title: String,
   video_photo_carousel: Array,
   game_photo: String,
