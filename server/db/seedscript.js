@@ -11,7 +11,7 @@ const gameCarouselInfo = new mongoose.Schema({
   },
   category_tree: {
     genres: {
-      RPG: Array,
+      genre_name: Array,
     },
   },
   game_title: String,
@@ -31,8 +31,18 @@ const gameCarouselInfo = new mongoose.Schema({
 
 const GameCarouselInfo = mongoose.model('GameCarouselInfo', gameCarouselInfo);
 
-const saveSeed = async(seed) => {
+const saveSeed = async (seed) => {
   await new GameCarouselInfo(seed).save().catch((err) => console.log('ERROR', err));
+};
+
+const s3MediaFetcher = (genre) => {
+  const result = [];
+  let currentPic = 1;
+  while (currentPic <= 12) {
+    result.push(`https://gameinfocarousel.s3.us-east-2.amazonaws.com/game_genres/${genre}/image+(${currentPic}).jpeg`);
+    currentPic++;
+  }
+  return result;
 };
 
 db.on('error', console.error.bind(console, 'mongoose connection error:'));
@@ -45,17 +55,21 @@ db.once('open', () => {
       const gameTitle = faker.random.words().toUpperCase();
       const randomIndex = Math.floor(Math.random() * 4);
       const reviews = ['Very Positive', 'Positive', 'Very Negative', 'Negative'];
+      const genres = ['RPG', 'Action', 'War', 'Strategy'];
+      const currentGenre = genres[randomIndex];
+      const gamePics = s3MediaFetcher(currentGenre);
 
       const dataFormat = {
         game_id: seeder,
         category_tree: {
           genres: {
-            RPG: [gameTitle],
+            genre_name: [gameTitle],
           },
         },
+        genre: currentGenre,
         game_title: gameTitle,
-        video_photo_carousel: [faker.image.imageUrl(), faker.image.imageUrl()],
-        game_photo: faker.image.imageUrl(),
+        video_photo_carousel: gamePics,
+        game_photo: gamePics[0],
         short_description: faker.lorem.paragraph(),
         recent_reviews: reviews[randomIndex],
         recent_reviews_count: faker.random.number(),
