@@ -2,6 +2,8 @@
   "extends": "airbnb",
   "rules": {
     "no-console": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "no-plusplus": "off",
+    "react/prop-types": "off"
   }
 }
