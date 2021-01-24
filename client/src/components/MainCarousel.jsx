@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { MainWrapper } from './styled-components';
 
 // const gameReducer = (state, action) => {
 //   switch (action.type) {
@@ -33,9 +34,9 @@ const MainCarousel = () => {
   }, []);
 
   return (
-    <div>
+    <MainWrapper>
       <CoverPhoto mainImage={mainImage} />
-    </div>
+    </MainWrapper>
   );
 };
 
