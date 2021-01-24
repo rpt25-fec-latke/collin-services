@@ -10,7 +10,7 @@ describe('API Endpoints', () => {
     expect(res.body.length).toEqual(1);
     done();
   });
-  it('Should contain a game_id property on a valid query parameter ID', async (done) => {
+  it('Should have a status of 500 for a query parameter ID that is invalid (not 1-100)', async (done) => {
     const res = await request.get('/game_carousel_info?id=150');
     expect(res.status).toBe(500);
     done();
