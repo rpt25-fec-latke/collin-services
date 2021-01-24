@@ -12,13 +12,16 @@ import axios from 'axios';
 // dispatch({ type: 'MAIN_IMAGE', image: res.data[0].game_photo })
 
 const App = () => {
-  const [currentGameId] = useState(1);
+  const [currentGameId] = useState(2);
   // const [image, dispatch] = useReducer(gameReducer, '');
   const [mainImage, setMainImage] = useState('');
 
   useEffect(() => {
     axios.get(`/game_carousel_info?id=${currentGameId}`)
-      .then((res) => setMainImage(res.data[0].game_photo))
+      .then((res) => {
+        console.log(res.data);
+        setMainImage(res.data[0].game_photo);
+      })
       .catch((err) => console.error(err));
   }, []);
 
