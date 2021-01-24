@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 // const gameReducer = (state, action) => {
 //   switch (action.type) {
@@ -10,6 +11,12 @@ import axios from 'axios';
 //   }
 // };
 // dispatch({ type: 'MAIN_IMAGE', image: res.data[0].game_photo })
+
+const Image = styled.div`
+display: flex;
+flex-direction: row-reverse;
+justify-content: center;
+`;
 
 const MainCarousel = () => {
   const [currentGameId] = useState(2);
@@ -33,9 +40,9 @@ const MainCarousel = () => {
 };
 
 const CoverPhoto = ({ mainImage }) => (
-  <div>
+  <Image>
     <img src={mainImage} alt="" />
-  </div>
+  </Image>
 );
 
 export default MainCarousel;
