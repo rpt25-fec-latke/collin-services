@@ -11,7 +11,7 @@ import axios from 'axios';
 // };
 // dispatch({ type: 'MAIN_IMAGE', image: res.data[0].game_photo })
 
-const App = () => {
+const MainCarousel = () => {
   const [currentGameId] = useState(2);
   // const [image, dispatch] = useReducer(gameReducer, '');
   const [mainImage, setMainImage] = useState('');
@@ -38,4 +38,4 @@ const CoverPhoto = ({ mainImage }) => (
   </div>
 );
 
-export default App;
+export default MainCarousel;
