@@ -1,5 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import MainCarousel from './components/MainCarousel';
+import { ThemeProvider } from 'styled-components';
 
-render(<MainCarousel />, document.getElementById('root'));
+import MainCarousel from './components/MainCarousel';
+import GlobalStyles from './theme/globalStyles';
+import Theme from './theme/theme';
+
+render(
+  <ThemeProvider theme={Theme}>
+    <GlobalStyles />
+    <MainCarousel />
+  </ThemeProvider>,
+  document.getElementById('root'),
+);
