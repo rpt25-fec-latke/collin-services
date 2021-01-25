@@ -1,15 +1,15 @@
 import React from 'react';
 import ImageStrip from './ImageStrip';
-import { ImageStripWrapper, MainImage } from './styles';
+import { ImageStripWrapper, MainImageWrapper, MainImage } from './styles';
 
-const ImageCarousel = ({ images }) => {
+const ImageCarousel = ({ images, mainImage, onImageClick }) => {
   return (
     <div>
-      <MainImage>
-        <img src={images[0]} alt="" />
-      </MainImage>
+      <MainImageWrapper>
+        <MainImage src={mainImage} alt="" />
+      </MainImageWrapper>
       <ImageStripWrapper>
-        {images.map((image, i) => <ImageStrip key={i} image={image} />)}
+        {images.map((image, i) => <ImageStrip key={i} image={image} onImageClick={onImageClick} />)}
       </ImageStripWrapper>
     </div>
   );

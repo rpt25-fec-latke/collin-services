@@ -2,14 +2,14 @@ import React from 'react';
 import { render } from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 
-import MainCarousel from './components/MainCarousel';
-import GlobalStyles from './theme/globalStyles';
-import Theme from './theme/theme';
+import GameInfoCarousel from './components/GameInfoCarousel';
+import GlobalStyles from './components/styles/theme/globalStyles';
+import Theme from './components/styles/theme/theme';
 
 render(
   <ThemeProvider theme={Theme}>
     <GlobalStyles />
-    <MainCarousel />
+    <GameInfoCarousel />
   </ThemeProvider>,
   document.getElementById('root'),
 );
