@@ -1,9 +1,9 @@
 import React from 'react';
 import { CarouselImageStrip } from './styles';
 
-const ImageStrip = ({ image }) => (
+const ImageStrip = ({ image, onImageClick }) => (
   <div>
-    <CarouselImageStrip src={image} alt="" />
+    <CarouselImageStrip src={image} onClick={onImageClick} alt="" />
   </div>
 );
 
