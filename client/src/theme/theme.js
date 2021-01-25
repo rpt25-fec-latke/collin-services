@@ -7,4 +7,9 @@ export default {
     text: 'white',
     link: 'purple',
   },
+  fontSizes: {
+    large: '3rem',
+    medium: '2rem',
+    p: '1.5rem',
+  },
 };
