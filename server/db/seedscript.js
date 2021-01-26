@@ -1,36 +1,9 @@
 const faker = require('faker');
 const mongoose = require('mongoose');
+const { GameCarouselInfo } = require('.');
 
 mongoose.connect('mongodb://localhost/gameinfo', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
-
-const gameCarouselInfo = new mongoose.Schema({
-  game_id: {
-    type: String,
-    unique: true,
-  },
-  category_tree: {
-    genres: {
-      genre_name: Array,
-    },
-  },
-  genre: String,
-  game_title: String,
-  video_photo_carousel: Array,
-  game_photo: String,
-  short_description: String,
-  recent_reviews: String,
-  recent_reviews_count: Number,
-  all_reviews: String,
-  all_reviews_count: Number,
-  release_date: Date,
-  developer: String,
-  publisher: String,
-  popular_tags: Array,
-},
-{ collection: 'gameCarouselInfo' });
-
-const GameCarouselInfo = mongoose.model('GameCarouselInfo', gameCarouselInfo);
 
 const saveSeed = async (seed) => {
   await new GameCarouselInfo(seed).save().catch((err) => console.log('ERROR', err));
@@ -50,8 +23,9 @@ db.on('error', console.error.bind(console, 'mongoose connection error:'));
 
 db.once('open', () => {
   console.log('successfully connected to mongoose');
-  (() => {
+  (async () => {
     let seeder = 1;
+
     while (seeder !== 101) {
       const gameTitle = faker.random.words().toUpperCase();
       const randomIndex = Math.floor(Math.random() * 4);
@@ -85,7 +59,7 @@ db.once('open', () => {
           faker.company.catchPhrase(),
         ],
       };
-      saveSeed(dataFormat);
+      await saveSeed(dataFormat);
       seeder++;
     }
 

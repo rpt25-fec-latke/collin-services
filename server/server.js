@@ -14,8 +14,6 @@ app.use(morgan('tiny'));
 app.use(express.static(path.resolve('client', 'dist')));
 
 app.get('/game_carousel_info', (req, res) => {
-  console.log('hi');
-  console.log('query', req.query.id);
   db.getInfo(req.query.id, (err, data) => {
     if (err) {
       res.send(500);
