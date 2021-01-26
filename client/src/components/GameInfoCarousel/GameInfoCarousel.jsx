@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import axios from 'axios';
 
-import { MainGameInfoWrapper, BackGroundWaterMark } from './styles';
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
-import { carouselReducer, mainImageReducer } from '../../reducers';
+import { MainGameInfoWrapper, BackGroundWaterMark } from './styles';
+import { carouselReducer, mainImageReducer, sliderReducer } from '../../reducers';
 import GamesContext from '../../context';
 
 const GameInfoCarousel = () => {
   const [currentGameId] = useState(7);
   const [images, carouselDispatch] = useReducer(carouselReducer, []);
   const [mainImage, mainImageDispatch] = useReducer(mainImageReducer, '');
+  const [slider, sliderDispatch] = useReducer(sliderReducer, '0');
   useEffect(() => {
     axios.get(`/game_carousel_info?id=${currentGameId}`)
       .then(({ data }) => {
@@ -27,7 +28,7 @@ const GameInfoCarousel = () => {
 
   return (
     <GamesContext.Provider value={{
-      images, carouselDispatch, mainImage, mainImageDispatch,
+      images, carouselDispatch, mainImage, mainImageDispatch, slider, sliderDispatch,
     }}
     >
       <BackGroundWaterMark>

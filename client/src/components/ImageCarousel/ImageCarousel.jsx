@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import ImageStrip from '../ImageStrip/ImageStrip';
-import { ImageStripWrapper, MainImageWrapper, MainImage } from './styles';
+import {
+  ImageStripWrapper, MainImageWrapper, MainImage,
+} from './styles';
 import GamesContext from '../../context';
 
 const ImageCarousel = () => {
