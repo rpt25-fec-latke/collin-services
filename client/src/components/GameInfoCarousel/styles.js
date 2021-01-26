@@ -12,24 +12,3 @@ export const MainGameInfoWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
-
-export const MainImageWrapper = styled.div`
-  display: flex;
-  justify-content: end;
-  margin-bottom: 10px;
-`;
-
-export const MainImage = styled.img`
-  width: 33rem;
-  height: 20rem;
-`;
-
-export const ImageStripWrapper = styled.div`
-  display: flex;
-`;
-
-export const CarouselImageStrip = styled.img`
-  width: 8rem;
-  height: 8rem;
-  padding: 5px;
-`;

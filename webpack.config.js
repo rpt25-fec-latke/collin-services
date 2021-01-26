@@ -24,6 +24,6 @@ module.exports = {
   devServer: {
     contentBase: DIST_DIR,
     port: 3008,
-    overlay: true,
+    hot: true,
   },
 };

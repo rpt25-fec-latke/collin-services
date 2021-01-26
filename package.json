@@ -12,7 +12,7 @@
     "test": "jest --detectOpenHandles --passWithNoTests",
     "seed": "node ./server/db/seedscript.js",
     "build": "webpack -w",
-    "dev-server": "webpack serve --mode development --port 3008 --open"
+    "dev-server": "nodemon server/initialize.js & webpack serve --port 3008 --hot --open"
   },
   "dependencies": {
     "axios": "^0.21.1",
