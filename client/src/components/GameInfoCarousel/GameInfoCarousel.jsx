@@ -7,13 +7,15 @@ import { carouselReducer, mainImageReducer, sliderReducer } from '../../reducers
 import GamesContext from '../../context';
 
 const GameInfoCarousel = () => {
-  const [currentGameId] = useState(7);
+  const [currentGameId] = useState(1);
+  const [backgroundImage, setBackgroundImage] = useState('');
   const [images, carouselDispatch] = useReducer(carouselReducer, []);
   const [mainImage, mainImageDispatch] = useReducer(mainImageReducer, '');
   const [slider, sliderDispatch] = useReducer(sliderReducer, '0');
   useEffect(() => {
     axios.get(`/game_carousel_info?id=${currentGameId}`)
       .then(({ data }) => {
+        setBackgroundImage(data[0].video_photo_carousel[10]);
         carouselDispatch({
           type: 'POPULATE_IMAGE_CAROUSEL',
           images: data[0].video_photo_carousel,
@@ -32,7 +34,7 @@ const GameInfoCarousel = () => {
     }}
     >
       <BackGroundWaterMark>
-        <MainGameInfoWrapper>
+        <MainGameInfoWrapper backgroundImage={backgroundImage}>
           {!images.length ? <div />
             : (
               <ImageCarousel />
