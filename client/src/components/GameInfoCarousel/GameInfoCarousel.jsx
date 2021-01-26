@@ -16,7 +16,7 @@ const GameInfoCarousel = () => {
       .then(({ data }) => {
         carouselDispatch({
           type: 'POPULATE_IMAGE_CAROUSEL',
-          images: data[0].video_photo_carousel.slice(4),
+          images: data[0].video_photo_carousel,
         });
         mainImageDispatch({
           type: 'CHANGE_MAIN_IMAGE',

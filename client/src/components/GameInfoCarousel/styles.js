@@ -10,5 +10,7 @@ export const BackGroundWaterMark = styled.div`
 
 export const MainGameInfoWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  margin: 12px 50px;
+  padding: 0px 100px;
+  overflow: hidden;
 `;

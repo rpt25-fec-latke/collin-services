@@ -2,19 +2,18 @@ import styled from 'styled-components';
 
 export const MainImageWrapper = styled.div`
   display: flex;
-  justify-content: end;
   margin-bottom: 10px;
 `;
 
 export const MainImage = styled.img`
-  width: 33rem;
-  height: 20rem;
+  width: 38rem;
+  height: 21rem;
 `;
 
 export const ImageStripWrapper = styled.div`
   display: flex;
   width: 50%;
-  overflow-x: auto;
+  overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
