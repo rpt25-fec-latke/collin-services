@@ -7,7 +7,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'client', 'src', 'index.jsx'),
   output: {
     path: DIST_DIR,
-    filename: 'bundle.js',
+    filename: 'gameInfoCarouselBundle.js',
   },
   module: {
     rules: [
