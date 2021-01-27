@@ -7,7 +7,7 @@ import { carouselReducer, mainImageReducer, sliderReducer } from '../../reducers
 import GamesContext from '../../context';
 
 const GameInfoCarousel = () => {
-  const [currentGameId] = useState(1);
+  const [currentGameId] = useState(7);
   const [backgroundImage, setBackgroundImage] = useState('');
   const [images, carouselDispatch] = useReducer(carouselReducer, []);
   const [mainImage, mainImageDispatch] = useReducer(mainImageReducer, '');

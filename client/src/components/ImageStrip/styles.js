@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CarouselImageStrip = styled.img`
+  display: flex;
   width: 6rem;
   height: 6rem;
   padding: 5px;
