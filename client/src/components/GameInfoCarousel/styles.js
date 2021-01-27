@@ -26,7 +26,6 @@ export const MainGameInfoWrapper = styled.div`
     right: 0px;
     bottom: 0px;
     left: 0px;
-    /* width: 100%; */
-    opacity: 0.16;
+    opacity: 0.12;
 }
 `;
