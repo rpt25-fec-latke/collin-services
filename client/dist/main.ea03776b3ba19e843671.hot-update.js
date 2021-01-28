@@ -1,0 +1,32 @@
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+self["webpackHotUpdatecollin_services_game_info_carousel"]("main",{
+
+/***/ "./client/src/components/GameInfoCarousel/GameInfoCarousel.jsx":
+/*!*********************************************************************!*\
+  !*** ./client/src/components/GameInfoCarousel/GameInfoCarousel.jsx ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => __WEBPACK_DEFAULT_EXPORT__\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ \"./node_modules/@babel/runtime/helpers/slicedToArray.js\");\n/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _ImageCarousel_ImageCarousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ImageCarousel/ImageCarousel */ \"./client/src/components/ImageCarousel/ImageCarousel.jsx\");\n/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles */ \"./client/src/components/GameInfoCarousel/styles.js\");\n/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../reducers */ \"./client/src/reducers/index.js\");\n/* harmony import */ var _context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../context */ \"./client/src/context/index.js\");\n\n\n\n\n\n\n\n\nvar GameInfoCarousel = function GameInfoCarousel() {\n  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(7),\n      _useState2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState, 1),\n      currentGameId = _useState2[0];\n\n  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),\n      _useState4 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useState3, 2),\n      backgroundImage = _useState4[0],\n      setBackgroundImage = _useState4[1];\n\n  var _useReducer = (0,react__WEBPACK_IMPORTED_MODULE_1__.useReducer)(_reducers__WEBPACK_IMPORTED_MODULE_5__.carouselReducer, []),\n      _useReducer2 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useReducer, 2),\n      images = _useReducer2[0],\n      carouselDispatch = _useReducer2[1];\n\n  var _useReducer3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useReducer)(_reducers__WEBPACK_IMPORTED_MODULE_5__.mainImageReducer, ''),\n      _useReducer4 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useReducer3, 2),\n      mainImage = _useReducer4[0],\n      mainImageDispatch = _useReducer4[1];\n\n  var _useReducer5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useReducer)(_reducers__WEBPACK_IMPORTED_MODULE_5__.sliderReducer, '0'),\n      _useReducer6 = _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0___default()(_useReducer5, 2),\n      slider = _useReducer6[0],\n      sliderDispatch = _useReducer6[1];\n\n  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {\n    axios__WEBPACK_IMPORTED_MODULE_2___default().get(\"/game_carousel_info?id=\".concat(currentGameId)).then(function (_ref) {\n      var data = _ref.data;\n      setBackgroundImage(data[0].video_photo_carousel[10]);\n      carouselDispatch({\n        type: 'POPULATE_IMAGE_CAROUSEL',\n        images: data[0].video_photo_carousel\n      });\n      mainImageDispatch({\n        type: 'CHANGE_MAIN_IMAGE',\n        mainImage: data[0].video_photo_carousel[0]\n      });\n    })[\"catch\"](function (err) {\n      return console.error(err);\n    });\n  }, []);\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_context__WEBPACK_IMPORTED_MODULE_6__.default.Provider, {\n    value: {\n      images: images,\n      carouselDispatch: carouselDispatch,\n      mainImage: mainImage,\n      mainImageDispatch: mainImageDispatch,\n      slider: slider,\n      sliderDispatch: sliderDispatch\n    }\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_styles__WEBPACK_IMPORTED_MODULE_4__.BackGroundWaterMark, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_styles__WEBPACK_IMPORTED_MODULE_4__.MainGameInfoWrapper, {\n    backgroundImage: backgroundImage\n  }, \" hi\", !images.length ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(\"div\", null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_ImageCarousel_ImageCarousel__WEBPACK_IMPORTED_MODULE_3__.default, null))));\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GameInfoCarousel);\n\n//# sourceURL=webpack://collin-services-game-info-carousel/./client/src/components/GameInfoCarousel/GameInfoCarousel.jsx?");
+
+/***/ })
+
+},
+/******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ 	"use strict";
+/******/ 
+/******/ 	/* webpack/runtime/getFullHash */
+/******/ 	(() => {
+/******/ 		__webpack_require__.h = () => "b20e819f8311d8a74ac2"
+/******/ 	})();
+/******/ 	
+/******/ }
+);

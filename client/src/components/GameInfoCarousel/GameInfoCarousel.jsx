@@ -12,8 +12,12 @@ const GameInfoCarousel = () => {
   const [images, carouselDispatch] = useReducer(carouselReducer, []);
   const [mainImage, mainImageDispatch] = useReducer(mainImageReducer, '');
   const [slider, sliderDispatch] = useReducer(sliderReducer, '0');
+
   useEffect(() => {
-    axios.get(`/game_carousel_info?id=${currentGameId}`)
+    const source = axios.CancelToken.source();
+    axios.get(`/game_carousel_info?id=${currentGameId}`, {
+      cancelToken: source.token,
+    })
       .then(({ data }) => {
         setBackgroundImage(data[0].video_photo_carousel[10]);
         carouselDispatch({
@@ -25,7 +29,10 @@ const GameInfoCarousel = () => {
           mainImage: data[0].video_photo_carousel[0],
         });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.log(err));
+    return () => {
+      source.cancel('cleanup axios request');
+    };
   }, []);
 
   return (
@@ -35,9 +42,11 @@ const GameInfoCarousel = () => {
     >
       <BackGroundWaterMark>
         <MainGameInfoWrapper backgroundImage={backgroundImage}>
-          {!images.length ? <div />
+          {!images.length ? <h1>Loading...</h1>
             : (
-              <ImageCarousel />
+              <div data-testid="images-rendering">
+                <ImageCarousel />
+              </div>
             )}
         </MainGameInfoWrapper>
       </BackGroundWaterMark>

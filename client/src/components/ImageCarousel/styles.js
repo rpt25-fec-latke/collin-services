@@ -13,7 +13,7 @@ export const MainImage = styled.img`
 
 export const ImageStripWrapper = styled.div`
   display: flex;
-  width: 60%;
+  width: 620px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
