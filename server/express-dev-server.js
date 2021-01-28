@@ -18,7 +18,9 @@ const app = express();
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath,
 }));
-app.use(webpackHotMiddleware(compiler));
+app.use(webpackHotMiddleware(compiler, {
+  noInfo: true,
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
