@@ -1,6 +1,6 @@
 module.exports = {
   projects: [
-    ('./client/src/components/jest.js'),
-    ('./server/backend-tests/jest.js'),
+    ('./client/src/components/jestconfig.js'),
+    ('./server/backend-tests/jestconfig.js'),
   ],
 };

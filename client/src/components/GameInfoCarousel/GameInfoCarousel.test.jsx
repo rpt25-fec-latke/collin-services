@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import '@testing-library/jest-dom';
 
-import GameInfoCarousel from '../GameInfoCarousel';
+import GameInfoCarousel from './GameInfoCarousel';
 
 const server = setupServer(rest.get('/game_carousel_info', (req, res, ctx) => {
   return res(
