@@ -6,7 +6,6 @@ import { MainGameInfoWrapper, BackGroundWaterMark } from './styles';
 import { carouselReducer, mainImageReducer, sliderReducer } from '../../reducers';
 import GamesContext from '../../context';
 
-console.log('soo what?');
 const GameInfoCarousel = () => {
   const [currentGameId] = useState(7);
   const [backgroundImage, setBackgroundImage] = useState('');
