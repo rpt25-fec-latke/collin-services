@@ -6,6 +6,7 @@ import { MainGameInfoWrapper, BackGroundWaterMark } from './styles';
 import { carouselReducer, mainImageReducer, sliderReducer } from '../../reducers';
 import GamesContext from '../../context';
 
+console.log('sometimes');
 const GameInfoCarousel = () => {
   const [currentGameId] = useState(7);
   const [backgroundImage, setBackgroundImage] = useState('');
@@ -18,20 +19,20 @@ const GameInfoCarousel = () => {
     axios.get(`/game_carousel_info?id=${currentGameId}`, {
       cancelToken: source.token,
     })
-      .then(({ data }) => {
-        setBackgroundImage(data[0].video_photo_carousel[10]);
+      .then(({ data: [{ video_photo_carousel: imageCarousel }] }) => {
+        setBackgroundImage(imageCarousel[10]);
         carouselDispatch({
           type: 'POPULATE_IMAGE_CAROUSEL',
-          images: data[0].video_photo_carousel,
+          images: imageCarousel,
         });
         mainImageDispatch({
           type: 'CHANGE_MAIN_IMAGE',
-          mainImage: data[0].video_photo_carousel[0],
+          mainImage: imageCarousel[0],
         });
       })
       .catch((err) => console.log(err));
     return () => {
-      source.cancel('cleanup axios request');
+      source.cancel('unsubscribe axios request');
     };
   }, []);
 

@@ -3,8 +3,9 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
-const db = require('./db');
 require('dotenv').config();
+
+const db = require('./db');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));

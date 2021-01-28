@@ -4,7 +4,7 @@ const DIST_DIR = path.resolve(__dirname, 'client', 'dist');
 
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, 'client', 'src', 'index.jsx'),
+  entry: ['./client/src/index.jsx'],
   output: {
     path: DIST_DIR,
     filename: 'gameInfoCarouselBundle.js',
@@ -20,10 +20,13 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {},
   },
   devServer: {
     contentBase: DIST_DIR,
-    port: 3008,
+    port: 8080,
     hot: true,
+    open: true,
   },
+  plugins: [],
 };
