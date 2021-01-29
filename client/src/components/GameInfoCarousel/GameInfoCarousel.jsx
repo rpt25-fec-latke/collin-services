@@ -7,7 +7,7 @@ import { carouselReducer, mainImageReducer, sliderReducer } from '../../reducers
 import GamesContext from '../../context';
 
 const GameInfoCarousel = () => {
-  const [currentGameId] = useState(7);
+  const [currentGameId] = useState(2);
   const [backgroundImage, setBackgroundImage] = useState('');
   const [images, carouselDispatch] = useReducer(carouselReducer, []);
   const [mainImage, mainImageDispatch] = useReducer(mainImageReducer, '');
@@ -42,7 +42,7 @@ const GameInfoCarousel = () => {
     >
       <BackGroundWaterMark>
         <MainGameInfoWrapper backgroundImage={backgroundImage}>
-          {!images.length ? <h1>Loading...</h1>
+          {!images.length ? <span data-testid="loading" />
             : (
               <div data-testid="images-rendering">
                 <ImageCarousel />

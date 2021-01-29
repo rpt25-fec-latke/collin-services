@@ -14,8 +14,8 @@ const server = setupServer(rest.get('/game_carousel_info', (req, res, ctx) => {
 }));
 
 beforeAll(() => server.listen());
-afterAll(() => server.close());
 afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
 test('renders GameInfoCarousel  component', () => {
   render(<GameInfoCarousel />);

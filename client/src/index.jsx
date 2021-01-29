@@ -15,5 +15,5 @@ render(
     <GlobalStyles />
     <GameInfoCarousel />
   </ThemeProvider>,
-  document.getElementById('root'),
+  document.getElementById('gameInfoCarousel'),
 );

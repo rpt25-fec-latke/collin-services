@@ -10,7 +10,7 @@ const ImageCarousel = () => {
   return (
     <>
       <MainImageWrapper>
-        <MainImage src={mainImage} alt="" />
+        <MainImage src={mainImage} data-testid="mainImageDisplay" />
       </MainImageWrapper>
       <ImageStripWrapper>
         {images.map((image, i) => <ImageStrip key={i} image={image} />)}
