@@ -3,10 +3,14 @@ import GamesContext from '../../context';
 import { CarouselImageStrip, ImageStripWrapper } from './styles';
 
 const ImageStrip = ({ image }) => {
-  const { mainImageDispatch } = useContext(GamesContext);
+  const { setMainImage } = useContext(GamesContext);
   return (
     <ImageStripWrapper>
-      <CarouselImageStrip src={image} onClick={(e) => mainImageDispatch({ type: 'CHANGE_MAIN_IMAGE', mainImage: e.target.src })} alt="" />
+      <CarouselImageStrip
+        src={image}
+        onClick={(e) => setMainImage(e.target.src)}
+        data-testid="imageStrip"
+      />
     </ImageStripWrapper>
   );
 };

@@ -3,15 +3,13 @@ import axios from 'axios';
 
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
 import { MainGameInfoWrapper, BackGroundWaterMark } from './styles';
-import { carouselReducer, mainImageReducer, sliderReducer } from '../../reducers';
 import GamesContext from '../../context';
 
 const GameInfoCarousel = () => {
   const [currentGameId] = useState(2);
   const [backgroundImage, setBackgroundImage] = useState('');
-  const [images, carouselDispatch] = useReducer(carouselReducer, []);
-  const [mainImage, mainImageDispatch] = useReducer(mainImageReducer, '');
-  const [slider, sliderDispatch] = useReducer(sliderReducer, '0');
+  const [images, setCarousel] = useState([]);
+  const [mainImage, setMainImage] = useState('');
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -20,14 +18,8 @@ const GameInfoCarousel = () => {
     })
       .then(({ data: [{ video_photo_carousel: imageCarousel }] }) => {
         setBackgroundImage(imageCarousel[10]);
-        carouselDispatch({
-          type: 'POPULATE_IMAGE_CAROUSEL',
-          images: imageCarousel,
-        });
-        mainImageDispatch({
-          type: 'CHANGE_MAIN_IMAGE',
-          mainImage: imageCarousel[0],
-        });
+        setCarousel(imageCarousel);
+        setMainImage(imageCarousel[0]);
       })
       .catch((err) => console.log(err));
     return () => {
@@ -37,12 +29,12 @@ const GameInfoCarousel = () => {
 
   return (
     <GamesContext.Provider value={{
-      images, carouselDispatch, mainImage, mainImageDispatch, slider, sliderDispatch,
+      images, setCarousel, mainImage, setMainImage,
     }}
     >
       <BackGroundWaterMark>
         <MainGameInfoWrapper backgroundImage={backgroundImage}>
-          {!images.length ? <span data-testid="loading" />
+          {!images.length ? <div data-testid="loading" />
             : (
               <div data-testid="images-rendering">
                 <ImageCarousel />

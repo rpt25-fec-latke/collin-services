@@ -10,24 +10,24 @@ beforeAll(() => {
   render(<GameInfoCarousel />);
 });
 
-test('renders ImageCarousel component', () => {
-  const images = ['url', 'url2'];
-  const mainImage = images[0];
-  render(
+const renderImageCarousel = (images, mainImage) => {
+  return render(
     <GamesContext.Provider value={{ images, mainImage }}>
       <ImageCarousel />
     </GamesContext.Provider>,
   );
+};
+
+test('renders ImageCarousel component', () => {
+  const images = ['url', 'url2'];
+  const mainImage = images[0];
+  renderImageCarousel(images, mainImage);
 });
 
 test('The ImageCarousel component should contain the proper link for the main display image', () => {
   const images = ['https://image1.s3.com', 'https://image2.s3.com'];
   const mainImage = images[0];
-  const { getByTestId } = render(
-    <GamesContext.Provider value={{ images, mainImage }}>
-      <ImageCarousel />
-    </GamesContext.Provider>,
-  );
+  const { getByTestId } = renderImageCarousel(images, mainImage);
   const img = getByTestId('mainImageDisplay');
   expect(img).toHaveAttribute('src', expect.stringContaining('.s3.'));
 });
