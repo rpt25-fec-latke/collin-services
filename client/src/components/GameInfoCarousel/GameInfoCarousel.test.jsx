@@ -17,18 +17,32 @@ beforeAll(() => server.listen());
 afterAll(() => server.close());
 afterEach(() => server.resetHandlers());
 
-describe('GameInfoCarousel Component', () => {
-  test('renders component', () => {
-    render(<GameInfoCarousel />);
-  });
+test('renders GameInfoCarousel  component', () => {
+  render(<GameInfoCarousel />);
 });
 
-test('api', async () => {
-  const { getByText, getByTestId } = render(<GameInfoCarousel />);
+test('renders the ImageCarousel component when game info is retrieved', async () => {
+  const { getByTestId } = render(<GameInfoCarousel />);
 
-  expect(getByText(/Loading.../i)).toBeInTheDocument();
+  expect(getByTestId('loading')).toBeInTheDocument();
 
   await waitFor(() => {
     expect(getByTestId('images-rendering')).toBeInTheDocument();
+  });
+});
+
+test('does not render the ImageCarousel component when game info is not retrieved', async () => {
+  server.use(rest.get('/game_carousel_info', (req, res, ctx) => {
+    return res(
+      ctx.status(500),
+    );
+  }));
+
+  const { getByTestId } = render(<GameInfoCarousel />);
+
+  expect(getByTestId('loading')).toBeInTheDocument();
+
+  await waitFor(() => {
+    expect(getByTestId('loading')).toBeInTheDocument();
   });
 });
