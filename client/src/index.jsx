@@ -1,5 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './componenets/App';
+import { ThemeProvider } from 'styled-components';
 
-render(<App />, document.getElementById('root'));
+import GameInfoCarousel from './components/GameInfoCarousel';
+import GlobalStyles from './components/styles/theme/globalStyles';
+import Theme from './components/styles/theme/theme';
+
+render(
+  <ThemeProvider theme={Theme}>
+    <GlobalStyles />
+    <GameInfoCarousel />
+  </ThemeProvider>,
+  document.getElementById('root'),
+);
