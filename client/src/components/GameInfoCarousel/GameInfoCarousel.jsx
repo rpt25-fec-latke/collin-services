@@ -1,15 +1,22 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useStateWithPromise } from '../hooks';
 
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
 import { MainGameInfoWrapper, BackGroundWaterMark } from './styles';
 import GamesContext from '../../context';
 
 const GameInfoCarousel = () => {
-  const [currentGameId] = useState(2);
+  const [currentGameId, setGameId] = useStateWithPromise(1);
   const [backgroundImage, setBackgroundImage] = useState('');
   const [images, setCarousel] = useState([]);
   const [mainImage, setMainImage] = useState('');
+  const queryId = window.location.search.slice(4);
+
+  useEffect(() => {
+    setGameId(queryId);
+    console.log(currentGameId);
+  }, []);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -25,7 +32,7 @@ const GameInfoCarousel = () => {
     return () => {
       source.cancel('unsubscribe axios request');
     };
-  }, []);
+  }, [currentGameId]);
 
   return (
     <GamesContext.Provider value={{
