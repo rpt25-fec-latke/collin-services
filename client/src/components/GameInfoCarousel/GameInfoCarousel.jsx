@@ -1,45 +1,69 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useStateWithPromise } from '../hooks';
 
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
+import Header from '../Header/Header';
+
 import { MainGameInfoWrapper, BackGroundWaterMark } from './styles';
 import GamesContext from '../../context';
 
 const GameInfoCarousel = () => {
-  const [currentGameId, setGameId] = useStateWithPromise(1);
+  const [gameId, setGameId] = useState(1);
   const [backgroundImage, setBackgroundImage] = useState('');
   const [images, setCarousel] = useState([]);
   const [mainImage, setMainImage] = useState('');
+  const [gameGenre, setGenre] = useState('');
+  const [gameTitle, setTitle] = useState('');
+  const [sidePanalImg, setPanalImg] = useState('');
+  const [sidePanalInfo, setPanalInfo] = useState({});
+  const [popularTags, setTags] = ([]);
   const queryId = window.location.search.slice(4);
 
   useEffect(() => {
-    setGameId(queryId);
-    console.log(currentGameId);
+    const currentId = queryId || gameId;
+    setGameId(currentId);
   }, []);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
-    axios.get(`/game_carousel_info?id=${currentGameId}`, {
+    axios.get(`/game_carousel_info?id=${gameId}`, {
       cancelToken: source.token,
     })
-      .then(({ data: [{ video_photo_carousel: imageCarousel }] }) => {
+      .then(({ data }) => {
+        const [{ video_photo_carousel: imageCarousel }] = data;
+        const [{ genre }] = data;
+        const [{ game_title: title }] = data;
+        const [{ popularTags: tags }] = data;
         setBackgroundImage(imageCarousel[10]);
-        setCarousel(imageCarousel);
+        setCarousel(imageCarousel.slice(0, 11));
         setMainImage(imageCarousel[0]);
+        setGenre(genre);
+        setTitle(title);
+        setPanalImg(imageCarousel[12]);
+        setPanalInfo(data[0]);
+        setTags(tags);
       })
       .catch((err) => console.log(err));
     return () => {
       source.cancel('unsubscribe axios request');
     };
-  }, [currentGameId]);
+  }, [gameId]);
 
   return (
     <GamesContext.Provider value={{
-      images, setCarousel, mainImage, setMainImage,
+      images,
+      setCarousel,
+      mainImage,
+      setMainImage,
+      gameGenre,
+      gameTitle,
+      sidePanalImg,
+      sidePanalInfo,
+      popularTags,
     }}
     >
       <BackGroundWaterMark>
+        <Header />
         <MainGameInfoWrapper backgroundImage={backgroundImage}>
           {!images.length ? <div data-testid="loading" />
             : (

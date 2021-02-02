@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const BackGroundWaterMark = styled.div`
+  /* display: flex; */
   background: url('https://store.cloudflare.steamstatic.com/public/images/v6/app/game_page_background_shadow.png?v=2');
   background-position: bottom;
   padding: 20px;
@@ -9,13 +10,14 @@ export const BackGroundWaterMark = styled.div`
 `;
 
 export const MainGameInfoWrapper = styled.div`
+  /* display: flex; */
   margin: 12px 50px;
   padding: 0px 100px;
 
 
 ::before {
     content: "";
-    display: flex;
+    /* display: flex; */
     background: url("${(props) => props.backgroundImage}");
     background-repeat: no-repeat;
     background-position: center;
