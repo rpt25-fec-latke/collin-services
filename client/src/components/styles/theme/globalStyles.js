@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
   body {
-    background-color: #1b2839;
+    background: linear-gradient(to right, #2d4e61, #1b2839);
   }
 `;
 export default GlobalStyle;

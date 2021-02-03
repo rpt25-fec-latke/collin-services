@@ -10,7 +10,8 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('../webpack.config.js');
 
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
-config.entry.unshift('webpack-hot-middleware/client?reload=true');
+config.entry.unshift('webpack-hot-middleware/client');
+// config.entry.unshift('react-hot-loader/patch');
 const compiler = webpack(config);
 const db = require('./db');
 
