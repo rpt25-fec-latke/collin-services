@@ -9,10 +9,11 @@
   },
   "scripts": {
     "start": "nodemon server/initialize.js",
-    "test": "jest --detectOpenHandles --passWithNoTests",
+    "start-dev": "nodemon server/express-dev-server.js",
+    "test": "jest --detectOpenHandles --testPathIgnorePatterns server/backend-tests",
     "seed": "node ./server/db/seedscript.js",
     "build": "webpack -w",
-    "dev-server": "webpack serve --mode development --port 3008 --open"
+    "dev-server": "webpack serve"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -29,7 +30,9 @@
     "react-dom": "^16.14.0",
     "regenerator-runtime": "^0.13.7",
     "styled-components": "^5.2.1",
-    "webpack": "^5.17.0"
+    "webpack": "^5.17.0",
+    "webpack-dev-middleware": "^4.1.0",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -37,8 +40,12 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@shelf/jest-mongodb": "^1.2.3",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/react-hooks": "^5.0.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.12.0",
+    "css-loader": "^5.0.1",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
@@ -46,6 +53,8 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.0.0",
     "jest": "^26.6.3",
+    "msw": "^0.26.0",
+    "style-loader": "^2.0.0",
     "supertest": "^6.1.1",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.2"

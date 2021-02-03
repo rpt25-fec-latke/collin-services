@@ -1,4 +1,5 @@
 node_modules
 .DS_Store
 .env
-bundle.js
+gameInfoCarouselBundle.js
+client/src/reducers

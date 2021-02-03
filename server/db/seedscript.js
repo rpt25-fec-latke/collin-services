@@ -26,7 +26,7 @@ db.once('open', () => {
   (async () => {
     let seeder = 1;
 
-    while (seeder !== 101) {
+    while (seeder <= 100) {
       const gameTitle = faker.random.words().toUpperCase();
       const randomIndex = Math.floor(Math.random() * 4);
       const reviews = ['Very Positive', 'Positive', 'Very Negative', 'Negative'];
@@ -63,7 +63,7 @@ db.once('open', () => {
       seeder++;
     }
 
-    if (seeder === 101) {
+    if (seeder <= 100) {
       console.log('Seeding Complete');
     }
   })();

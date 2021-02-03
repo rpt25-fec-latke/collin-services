@@ -4,10 +4,10 @@ const DIST_DIR = path.resolve(__dirname, 'client', 'dist');
 
 module.exports = {
   mode: 'development',
-  entry: path.resolve(__dirname, 'client', 'src', 'index.jsx'),
+  entry: ['./client/src/index.jsx'],
   output: {
     path: DIST_DIR,
-    filename: 'bundle.js',
+    filename: 'gameInfoCarouselBundle.js',
   },
   module: {
     rules: [
@@ -16,14 +16,22 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+      {
+        test: /\.css$/i,
+        exclude: /node_modules/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {},
   },
   devServer: {
     contentBase: DIST_DIR,
-    port: 3008,
-    overlay: true,
+    port: 8080,
+    hot: true,
+    open: true,
   },
+  plugins: [],
 };
