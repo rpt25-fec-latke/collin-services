@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
-import { GameTitle, CategoryTree } from './styles';
+import {
+  GameTitle, CategoryTree, CategoryWrapper, GameTitleWrapper,
+} from './styles';
 import GamesContext from '../../context';
 
 const Header = () => {
@@ -14,6 +16,7 @@ const Header = () => {
         {gameTitle}
       </GameTitle>
     </>
+
   );
 };
 

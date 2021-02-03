@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-export const CarouselImageStrip = styled.img`
-  display: flex;
-  width: 87px;
+export const CarouselImage = styled.img`
+  width: 90px;
   height: 65px;
-  padding: 5px;
-`;
-
-export const ImageStripWrapper = styled.div`
-  display: flex;
+  margin: 2px;
+  border: 1px solid black;
+  border-left: 5px solid black;
+  border-right: 5px solid black;
 `;
