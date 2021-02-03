@@ -16,7 +16,7 @@ const s3MediaFetcher = (genre) => {
     result.push(`https://gameinfocarousel.s3.us-east-2.amazonaws.com/game_genres/${genre}/image+(${currentPic}).jpeg`);
     currentPic++;
   }
-  return result;
+  return result.sort(() => Math.random() - 0.5);
 };
 
 db.on('error', console.error.bind(console, 'mongoose connection error:'));
@@ -27,7 +27,7 @@ db.once('open', () => {
     let seeder = 1;
 
     while (seeder <= 100) {
-      const gameTitle = faker.random.words().toUpperCase();
+      const gameTitle = faker.commerce.productName();
       const randomIndex = Math.floor(Math.random() * 4);
       const reviews = ['Very Positive', 'Positive', 'Very Negative', 'Negative'];
       const genres = ['RPG', 'Action', 'War', 'Strategy'];
@@ -62,9 +62,7 @@ db.once('open', () => {
       await saveSeed(dataFormat);
       seeder++;
     }
-
-    if (seeder <= 100) {
-      console.log('Seeding Complete');
-    }
+    console.log('Seeding Complete');
+    mongoose.connection.close();
   })();
 });

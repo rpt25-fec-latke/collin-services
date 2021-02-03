@@ -1,19 +1,22 @@
 import styled from 'styled-components';
 
-export const MainImageWrapper = styled.div`
+export const Container = styled.div`
   display: flex;
-  margin-bottom: 10px;
+  flex-direction: column;
+  flex-grow: 4;
 `;
 
 export const MainImage = styled.img`
-  display: flex;
-  width: 38rem;
-  height: 21rem;
+  width: 485px;
+  height: 341px;
+  border-left: 30px solid black;
+  border-right: 30px solid black;
+  margin-bottom: 2px;
 `;
 
 export const ImageStripWrapper = styled.div`
   display: flex;
-  width: 620px;
+  width: 545px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
