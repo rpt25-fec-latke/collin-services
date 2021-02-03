@@ -45,10 +45,7 @@
     "@testing-library/react-hooks": "^5.0.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.12.0",
-<<<<<<< HEAD
     "css-loader": "^5.0.1",
-=======
->>>>>>> main
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
