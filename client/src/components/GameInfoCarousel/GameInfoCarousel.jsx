@@ -9,6 +9,9 @@ import {
   MainGameInfoWrapper,
   Container,
   Wrapper,
+  ImageCarouselWrapper,
+  SideInfoPanalWrapper,
+  BackgroundWaterMark,
 } from './styles';
 import GamesContext from '../../context';
 
@@ -33,6 +36,10 @@ const GameInfoCarousel = () => {
     const source = axios.CancelToken.source();
     axios.get(`/game_carousel_info?id=${gameId}`, {
       cancelToken: source.token,
+      proxy: {
+        host: 'localhost',
+        port: 3000,
+      },
     })
       .then(({ data }) => {
         const [{ video_photo_carousel: imageCarousel }] = data;
@@ -70,19 +77,21 @@ const GameInfoCarousel = () => {
       <Container>
         <Wrapper>
           <Header />
-          <MainGameInfoWrapper backgroundImage={backgroundImage}>
-            {!images.length ? <div data-testid="loading" />
-              : (
-                <>
-                  <div data-testid="images-rendering">
-                    <ImageCarousel />
-                  </div>
-                  <div>
-                    <SideInfoPanal />
-                  </div>
-                </>
-              )}
-          </MainGameInfoWrapper>
+          <BackgroundWaterMark>
+            <MainGameInfoWrapper backgroundImage={backgroundImage}>
+              {!images.length ? <div data-testid="loading" />
+                : (
+                  <>
+                    <ImageCarouselWrapper data-testid="images-rendering">
+                      <ImageCarousel />
+                    </ImageCarouselWrapper>
+                    <SideInfoPanalWrapper>
+                      <SideInfoPanal />
+                    </SideInfoPanalWrapper>
+                  </>
+                )}
+            </MainGameInfoWrapper>
+          </BackgroundWaterMark>
         </Wrapper>
       </Container>
     </GamesContext.Provider>

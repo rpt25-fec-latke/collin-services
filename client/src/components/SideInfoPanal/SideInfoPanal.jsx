@@ -3,6 +3,7 @@ import {
   SidePanalImg,
   ShortDescription,
   Container,
+  Reviews,
 } from './styles';
 import GamesContext from '../../context';
 
@@ -13,6 +14,8 @@ const SideInfoPanal = () => {
     <Container>
       <SidePanalImg src={sidePanalImg} />
       <ShortDescription>{sidePanalInfo.short_description}</ShortDescription>
+      <Reviews>Recent Reviews: </Reviews>
+      <Reviews>All Reviews: </Reviews>
     </Container>
   );
 };

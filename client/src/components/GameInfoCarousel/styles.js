@@ -6,23 +6,33 @@ export const Container = styled.div`
   align-items: center;
   height: 100%;
   width: 100%;
-  background: url('https://store.cloudflare.steamstatic.com/public/images/v6/app/game_page_background_shadow.png?v=2');
-  background-position: bottom;
-  background-repeat: no-repeat;
   padding: 20px;
+  margin-top: 150px;
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
-  height: 50%;
+  align-items: center;
+`;
+
+export const BackgroundWaterMark = styled.div`
+  display: flex;
+  justify-content: center;
+  background: url('https://store.cloudflare.steamstatic.com/public/images/v6/app/game_page_background_shadow.png?v=2');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  z-index: -1;
+  background-size: 1025px;
 `;
 
 export const MainGameInfoWrapper = styled.div`
   display: flex;
+  height: 50%;
+  width: 50%;
+  justify-content: center;
 
-::before {
+/* ::before {
     content: "";
     background: url("${(props) => props.backgroundImage}");
     background-repeat: no-repeat;
@@ -36,12 +46,11 @@ export const MainGameInfoWrapper = styled.div`
     bottom: 0px;
     left: 0px;
     opacity: 0.04;
-}
+} */
 `;
 
 export const ImageCarouselWrapper = styled.div`
-  /* display: flex;
-  flex-direction: column; */
+  /* align-self: flex-start; */
 `;
 
 export const SideInfoPanalWrapper = styled.div`
