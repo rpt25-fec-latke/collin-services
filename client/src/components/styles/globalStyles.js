@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background: linear-gradient(to right, #2d4e61, #1b2839);
-    overflow: hidden;
+    overflow: auto;
   }
 `;
 export default GlobalStyle;
