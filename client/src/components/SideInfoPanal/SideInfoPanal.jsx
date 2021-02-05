@@ -8,7 +8,6 @@ import GamesContext from '../../context';
 
 const SideInfoPanal = () => {
   const { sidePanalImg, sidePanalInfo } = useContext(GamesContext);
-  console.log(sidePanalInfo);
 
   return (
     <Container>
