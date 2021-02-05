@@ -25,6 +25,9 @@ const GameInfoCarousel = () => {
   const [sidePanelImg, setPanelImg] = useState('');
   const [sidePanelInfo, setPanelInfo] = useState({});
   const [imageFade, setImageFade] = useState(0);
+  const [show, setShow] = useState(false);
+  const openModal = () => setShow(true);
+  const closeModal = () => setShow(false);
   const queryId = window.location.search.slice(4);
 
   useEffect(() => {
