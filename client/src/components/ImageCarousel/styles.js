@@ -22,6 +22,7 @@ export const MainImage = styled.img`
   border-left: 30px solid black;
   border-right: 30px solid black;
   margin-bottom: 2px;
+  transition: visibility 0.5s, opacity 0.5s;
 
 
 

@@ -3,14 +3,14 @@ import axios from 'axios';
 
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
 import Header from '../Header/Header';
-import SideInfoPanal from '../SideInfoPanal/SideInfoPanal';
+import SideInfoPanel from '../SideInfoPanel/SideInfoPanel';
 
 import {
   MainGameInfoWrapper,
   Container,
   Wrapper,
   ImageCarouselWrapper,
-  SideInfoPanalWrapper,
+  SideInfoPanelWrapper,
   BackgroundWaterMark,
 } from './styles';
 import GamesContext from '../../context';
@@ -22,9 +22,8 @@ const GameInfoCarousel = () => {
   const [mainImage, setMainImage] = useState('');
   const [gameGenre, setGenre] = useState('');
   const [gameTitle, setTitle] = useState('');
-  const [sidePanalImg, setPanalImg] = useState('');
-  const [sidePanalInfo, setPanalInfo] = useState({});
-  const [popularTags, setTags] = useState([]);
+  const [sidePanelImg, setPanelImg] = useState('');
+  const [sidePanelInfo, setPanelInfo] = useState({});
   const [imageFade, setImageFade] = useState(0);
   const queryId = window.location.search.slice(4);
 
@@ -37,24 +36,18 @@ const GameInfoCarousel = () => {
     const source = axios.CancelToken.source();
     axios.get(`/game_carousel_info?id=${gameId}`, {
       cancelToken: source.token,
-      proxy: {
-        host: 'localhost',
-        port: 3000,
-      },
     })
       .then(({ data }) => {
         const [{ video_photo_carousel: imageCarousel }] = data;
         const [{ genre }] = data;
         const [{ game_title: title }] = data;
-        const [{ popular_tags: tags }] = data;
         setBackgroundImage(imageCarousel[10]);
         setCarousel(imageCarousel.slice(0, 10));
         setMainImage(imageCarousel[0]);
         setGenre(genre);
         setTitle(title);
-        setPanalImg(imageCarousel[11]);
-        setPanalInfo(data[0]);
-        setTags(tags);
+        setPanelImg(imageCarousel[11]);
+        setPanelInfo(data[0]);
       })
       .catch((err) => console.log(err));
     return () => {
@@ -70,13 +63,14 @@ const GameInfoCarousel = () => {
       setMainImage,
       gameGenre,
       gameTitle,
-      sidePanalImg,
-      sidePanalInfo,
-      popularTags,
+      sidePanelImg,
+      sidePanelInfo,
       imageFade,
       setImageFade,
     }}
     >
+      {(sidePanelInfo.game_id && images.length === 10)
+      && (
       <Container>
         <Wrapper>
           <Header />
@@ -88,15 +82,16 @@ const GameInfoCarousel = () => {
                     <ImageCarouselWrapper data-testid="images-rendering">
                       <ImageCarousel />
                     </ImageCarouselWrapper>
-                    <SideInfoPanalWrapper>
-                      <SideInfoPanal />
-                    </SideInfoPanalWrapper>
+                    <SideInfoPanelWrapper>
+                      <SideInfoPanel />
+                    </SideInfoPanelWrapper>
                   </>
                 )}
             </MainGameInfoWrapper>
           </BackgroundWaterMark>
         </Wrapper>
       </Container>
+      )}
     </GamesContext.Provider>
   );
 };

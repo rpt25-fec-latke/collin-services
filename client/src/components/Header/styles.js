@@ -9,10 +9,18 @@ export const GameTitle = styled.div`
 `;
 
 export const CategoryTree = styled.div`
+  display: flex;
   font-family: "Motiva Sans", sans-serif;
   font-size: 12px;
   color: #56707f;
-  position: sticky;
+`;
+
+export const Category = styled.div`
+  padding: 0px 3px;
+  &:hover {
+    color: #ffffff;
+    cursor: pointer;
+  }
 `;
 
 export const Wrapper = styled.div`

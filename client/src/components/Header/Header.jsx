@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {
-  GameTitle, CategoryTree, Wrapper,
+  GameTitle, CategoryTree, Wrapper, Category,
 } from './styles';
 import GamesContext from '../../context';
 
@@ -9,8 +9,11 @@ const Header = () => {
   return (
     <Wrapper>
       <CategoryTree>
-        All Games
-        {` > ${gameGenre} Games > ${gameTitle}`}
+        <Category>All Games</Category>
+        {' > '}
+        <Category>{gameGenre}</Category>
+        {' > '}
+        <Category>{gameTitle}</Category>
       </CategoryTree>
       <GameTitle>
         {gameTitle}

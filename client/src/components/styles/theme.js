@@ -1,12 +1,10 @@
 export default {
-  panalColors: {
+  panelColors: {
     grey: '#556772',
     blue: '#66c0f4',
   },
-  fontSizes: {
-    large: '3rem',
-    medium: '2rem',
-    p: '1.5rem',
+  fontStyle: {
+    sidePanel: 'Arial, Helvetica, sans-serif;',
   },
 };
 // linear-gradient(-60deg, rgb(65, 122, 155)

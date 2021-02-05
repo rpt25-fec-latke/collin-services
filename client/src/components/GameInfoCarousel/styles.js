@@ -33,19 +33,21 @@ export const MainGameInfoWrapper = styled.div`
   justify-content: center;
 
 ::before {
+    border-radius: 1px;
+    border-width: thick;
     content: "";
     background: url("${(props) => props.backgroundImage}");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 2000px 1500px;
-    border-radius: 5000px;
+    background-size: 1270px 715px;
     position: absolute;
     z-index: -1;
-    top: -150px;
+    top: -100px;
     right: 0px;
     bottom: 0px;
     left: 0px;
     opacity: 0.04;
+
 }
 `;
 
@@ -53,6 +55,6 @@ export const ImageCarouselWrapper = styled.div`
 
 `;
 
-export const SideInfoPanalWrapper = styled.div`
+export const SideInfoPanelWrapper = styled.div`
   padding-left: 7px;
 `;
