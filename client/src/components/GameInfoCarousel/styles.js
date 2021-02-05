@@ -22,8 +22,8 @@ export const BackgroundWaterMark = styled.div`
   background: url('https://store.cloudflare.steamstatic.com/public/images/v6/app/game_page_background_shadow.png?v=2');
   background-position: bottom;
   background-repeat: no-repeat;
-  z-index: -1;
-  background-size: 1025px;
+  min-width: 885px;
+  max-width: 50%;
 `;
 
 export const MainGameInfoWrapper = styled.div`
@@ -32,7 +32,7 @@ export const MainGameInfoWrapper = styled.div`
   width: 50%;
   justify-content: center;
 
-/* ::before {
+::before {
     content: "";
     background: url("${(props) => props.backgroundImage}");
     background-repeat: no-repeat;
@@ -46,7 +46,7 @@ export const MainGameInfoWrapper = styled.div`
     bottom: 0px;
     left: 0px;
     opacity: 0.04;
-} */
+}
 `;
 
 export const ImageCarouselWrapper = styled.div`

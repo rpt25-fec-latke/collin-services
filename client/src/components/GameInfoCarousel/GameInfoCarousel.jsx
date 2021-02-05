@@ -25,6 +25,7 @@ const GameInfoCarousel = () => {
   const [sidePanalImg, setPanalImg] = useState('');
   const [sidePanalInfo, setPanalInfo] = useState({});
   const [popularTags, setTags] = useState([]);
+  const [imageFade, setImageFade] = useState(0);
   const queryId = window.location.search.slice(4);
 
   useEffect(() => {
@@ -72,6 +73,8 @@ const GameInfoCarousel = () => {
       sidePanalImg,
       sidePanalInfo,
       popularTags,
+      imageFade,
+      setImageFade,
     }}
     >
       <Container>
