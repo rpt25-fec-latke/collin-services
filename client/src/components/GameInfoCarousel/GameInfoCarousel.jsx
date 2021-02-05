@@ -12,6 +12,7 @@ import {
   ImageCarouselWrapper,
   SideInfoPanelWrapper,
   BackgroundWaterMark,
+  BGI,
 } from './styles';
 import GamesContext from '../../context';
 

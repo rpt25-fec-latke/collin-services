@@ -26,11 +26,27 @@ export const BackgroundWaterMark = styled.div`
   max-width: 50%;
 `;
 
+export const BGI = styled.div`
+  /* display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position:relative;
+  z-index: -1;
+  width: 50%;
+  width: 1270px;
+  height: 715px; */
+  /* background-image: url("${(props) => props.backgroundImage}");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; */
+`;
+
 export const MainGameInfoWrapper = styled.div`
   display: flex;
   height: 50%;
   width: 50%;
   justify-content: center;
+  z-index: 1;
 
 ::before {
     border-radius: 1px;
