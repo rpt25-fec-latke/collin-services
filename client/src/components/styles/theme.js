@@ -1,11 +1,7 @@
 export default {
-  colors: {
-    main: '#1b2839',
-    dark: 'black',
-    light: 'pink',
-    lighter: 'white',
-    text: 'white',
-    link: 'purple',
+  panalColors: {
+    grey: '#556772',
+    blue: '#66c0f4',
   },
   fontSizes: {
     large: '3rem',
@@ -13,3 +9,4 @@ export default {
     p: '1.5rem',
   },
 };
+// linear-gradient(-60deg, rgb(65, 122, 155)

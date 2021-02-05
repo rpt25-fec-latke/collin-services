@@ -46,7 +46,7 @@ const GameInfoCarousel = () => {
         const [{ video_photo_carousel: imageCarousel }] = data;
         const [{ genre }] = data;
         const [{ game_title: title }] = data;
-        const [{ popularTags: tags }] = data;
+        const [{ popular_tags: tags }] = data;
         setBackgroundImage(imageCarousel[10]);
         setCarousel(imageCarousel.slice(0, 10));
         setMainImage(imageCarousel[0]);

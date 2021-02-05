@@ -50,9 +50,9 @@ export const MainGameInfoWrapper = styled.div`
 `;
 
 export const ImageCarouselWrapper = styled.div`
-  /* align-self: flex-start; */
+
 `;
 
 export const SideInfoPanalWrapper = styled.div`
-  /* display: flex; */
+  padding-left: 7px;
 `;
