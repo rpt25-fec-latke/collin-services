@@ -3,15 +3,13 @@ import GamesContext from '../../context';
 import { CarouselImage } from './styles';
 
 const ImageStrip = ({ image }) => {
-  const { setMainImage, setImageFade, imageFade } = useContext(GamesContext);
-  // let hi = 1;
-  // console.log(imageFade, hi++);
+  const { setMainImage, setStopPicAuto } = useContext(GamesContext);
   return (
     <CarouselImage
       src={image}
       onClick={(e) => {
         setMainImage(e.target.src);
-        setImageFade(imageFade + 1);
+        setStopPicAuto(true);
       }}
       data-testid="imageStrip"
     />

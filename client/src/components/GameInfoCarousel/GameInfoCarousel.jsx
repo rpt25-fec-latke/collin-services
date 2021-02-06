@@ -25,14 +25,31 @@ const GameInfoCarousel = () => {
   const [gameTitle, setTitle] = useState('');
   const [sidePanelImg, setPanelImg] = useState('');
   const [sidePanelInfo, setPanelInfo] = useState({});
-  const [imageFade, setImageFade] = useState(0);
   const [showModal, setModal] = useState(false);
+  const [autoIterate, setAutoIterate] = useState(1);
+  const [stopPicAutomation, setStopPicAuto] = useState(false);
   const queryId = window.location.search.slice(4);
 
   useEffect(() => {
     const currentId = queryId || gameId;
     setGameId(currentId);
   }, []);
+
+  useEffect(() => {
+    if (images[autoIterate] === undefined) {
+      setAutoIterate(0);
+    }
+    let picTraverse;
+    if (!stopPicAutomation) {
+      picTraverse = setTimeout(() => {
+        setMainImage(images[autoIterate]);
+        setAutoIterate(autoIterate + 1);
+      }, 4000);
+    }
+    return () => {
+      clearTimeout(picTraverse);
+    };
+  }, [mainImage, autoIterate]);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -67,10 +84,9 @@ const GameInfoCarousel = () => {
       gameTitle,
       sidePanelImg,
       sidePanelInfo,
-      imageFade,
-      setImageFade,
       showModal,
       setModal,
+      setStopPicAuto,
     }}
     >
       {(sidePanelInfo.game_id && images.length === 10)
