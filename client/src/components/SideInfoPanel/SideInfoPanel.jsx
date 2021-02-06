@@ -18,7 +18,7 @@ import {
 import GamesContext from '../../context';
 
 const SideInfoPanel = () => {
-  const { sidePanelImg, sidePanelInfo } = useContext(GamesContext);
+  const { sidePanelImg, sidePanelInfo, setModal } = useContext(GamesContext);
   return (
     <Container>
       <SidePanelImg src={sidePanelImg} />
@@ -74,9 +74,10 @@ const SideInfoPanel = () => {
           Popular user-defined tags for this product:
         </ReviewInfo>
         <TagList>
-          {sidePanelInfo.popular_tags && sidePanelInfo.popular_tags.map((tag, i) => (
+          {sidePanelInfo.popular_tags && sidePanelInfo.popular_tags.slice(0, 2).map((tag, i) => (
             <Tag key={i}>{tag}</Tag>
           ))}
+          <Tag onClick={() => setModal(true)}>+</Tag>
         </TagList>
       </TagsWrapper>
     </Container>

@@ -4,6 +4,7 @@ import axios from 'axios';
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
 import Header from '../Header/Header';
 import SideInfoPanel from '../SideInfoPanel/SideInfoPanel';
+import Modal from '../Modal/Modal';
 
 import {
   MainGameInfoWrapper,
@@ -25,9 +26,7 @@ const GameInfoCarousel = () => {
   const [sidePanelImg, setPanelImg] = useState('');
   const [sidePanelInfo, setPanelInfo] = useState({});
   const [imageFade, setImageFade] = useState(0);
-  const [show, setShow] = useState(false);
-  const openModal = () => setShow(true);
-  const closeModal = () => setShow(false);
+  const [showModal, setModal] = useState(false);
   const queryId = window.location.search.slice(4);
 
   useEffect(() => {
@@ -70,11 +69,14 @@ const GameInfoCarousel = () => {
       sidePanelInfo,
       imageFade,
       setImageFade,
+      showModal,
+      setModal,
     }}
     >
       {(sidePanelInfo.game_id && images.length === 10)
       && (
       <Container backgroundImage={backgroundImage}>
+        <Modal />
         <Wrapper>
           <Header />
           <BackgroundWaterMark>
