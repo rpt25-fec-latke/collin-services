@@ -12,7 +12,6 @@ import {
   ImageCarouselWrapper,
   SideInfoPanelWrapper,
   BackgroundWaterMark,
-  BGI,
 } from './styles';
 import GamesContext from '../../context';
 
@@ -75,7 +74,7 @@ const GameInfoCarousel = () => {
     >
       {(sidePanelInfo.game_id && images.length === 10)
       && (
-      <Container>
+      <Container backgroundImage={backgroundImage}>
         <Wrapper>
           <Header />
           <BackgroundWaterMark>

@@ -19,7 +19,6 @@ import GamesContext from '../../context';
 
 const SideInfoPanel = () => {
   const { sidePanelImg, sidePanelInfo } = useContext(GamesContext);
-  console.log(sidePanelInfo);
   return (
     <Container>
       <SidePanelImg src={sidePanelImg} />

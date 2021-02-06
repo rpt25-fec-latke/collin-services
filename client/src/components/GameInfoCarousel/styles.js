@@ -8,6 +8,7 @@ export const Container = styled.div`
   width: 100%;
   padding: 20px;
   margin-top: 150px;
+
 `;
 
 export const Wrapper = styled.div`
@@ -22,23 +23,8 @@ export const BackgroundWaterMark = styled.div`
   background: url('https://store.cloudflare.steamstatic.com/public/images/v6/app/game_page_background_shadow.png?v=2');
   background-position: bottom;
   background-repeat: no-repeat;
-  min-width: 885px;
-  max-width: 50%;
-`;
-
-export const BGI = styled.div`
-  /* display: block;
-  margin-left: auto;
-  margin-right: auto;
-  position:relative;
-  z-index: -1;
-  width: 50%;
-  width: 1270px;
-  height: 715px; */
-  /* background-image: url("${(props) => props.backgroundImage}");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center; */
+  min-width: 895px;
+  max-width: 45%;
 `;
 
 export const MainGameInfoWrapper = styled.div`
@@ -46,23 +32,24 @@ export const MainGameInfoWrapper = styled.div`
   height: 50%;
   width: 50%;
   justify-content: center;
-  z-index: 1;
 
-::before {
+::after {
     border-radius: 1px;
     border-width: thick;
     content: "";
     background: url("${(props) => props.backgroundImage}");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 1270px 715px;
+    background-size: 100%;
+    border-radius: 100%;
+    border-color: linear-gradient(-60deg, rgb(65, 122, 155));
     position: absolute;
     z-index: -1;
-    top: -100px;
+    top: -30%;
     right: 0px;
-    bottom: 0px;
+    bottom: 0%;
     left: 0px;
-    opacity: 0.04;
+    opacity: 0.05;
 
 }
 `;
