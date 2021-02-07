@@ -50,7 +50,8 @@ const SideInfoPanel = () => {
       <ReleaseDateWrapper>
         <ReleaseInfo>Release Date:</ReleaseInfo>
         <ReleaseDate>
-          {sidePanelInfo.release_date && sidePanelInfo.release_date.slice(0, 10)}
+          {sidePanelInfo.release_date
+          && sidePanelInfo.release_date.slice(0, 10)}
         </ReleaseDate>
       </ReleaseDateWrapper>
       <ReviewWrapper>
@@ -74,7 +75,8 @@ const SideInfoPanel = () => {
           Popular user-defined tags for this product:
         </ReviewInfo>
         <TagList>
-          {sidePanelInfo.popular_tags && sidePanelInfo.popular_tags.slice(0, 2).map((tag, i) => (
+          {sidePanelInfo.popular_tags
+          && sidePanelInfo.popular_tags.slice(0, 2).map((tag, i) => (
             <Tag key={i}>{tag}</Tag>
           ))}
           <Tag onClick={() => setModal(true)}>+</Tag>
