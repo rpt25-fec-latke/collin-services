@@ -15,7 +15,6 @@ app.use(morgan('dev'));
 app.use(express.static(path.resolve('client', 'dist')));
 
 app.get('/game_carousel_info', (req, res) => {
-  console.log('SERVICE HEADERS', req.headers);
   const queryId = req.query ? req.query.id : 1;
   db.getInfo(queryId, (err, data) => {
     if (err) {
