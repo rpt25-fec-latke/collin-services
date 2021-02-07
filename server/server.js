@@ -11,7 +11,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
-app.use(morgan('tiny'));
+app.use(morgan('dev'));
 app.use(express.static(path.resolve('client', 'dist')));
 
 app.get('/game_carousel_info', (req, res) => {
@@ -19,7 +19,7 @@ app.get('/game_carousel_info', (req, res) => {
   const queryId = req.query ? req.query.id : 1;
   db.getInfo(queryId, (err, data) => {
     if (err) {
-      res.send(500);
+      res.status(500).send({ internalServerError: err });
     } else {
       res.json(data);
     }
