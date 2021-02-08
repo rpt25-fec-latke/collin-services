@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   width: 890px;
   align-items: flex-start;
   flex-grow: 3;
-  z-index: 1;
   position:relative
 `;
 
@@ -23,7 +22,6 @@ export const CategoryTree = styled.div`
   font-family: "Motiva Sans", sans-serif;
   font-size: 12px;
   color: #56707f;
-  z-index: 2;
   position:relative
 `;
 
@@ -33,6 +31,5 @@ export const Category = styled.div`
     color: #ffffff;
     cursor: pointer;
   }
-  z-index: 4;
   position:relative
 `;

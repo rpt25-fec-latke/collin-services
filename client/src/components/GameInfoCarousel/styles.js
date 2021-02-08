@@ -33,9 +33,10 @@ export const MainGameInfoWrapper = styled.div`
   width: 50%;
   justify-content: center;
 
-  ::after {
+
+  /* ::after {
       content: "";
-      background: url("${(props) => props.backgroundImage}");
+      background-image: url("${(props) => props.backgroundImage}");
       background-repeat: no-repeat;
       background-position: center;
       background-size: 80%;
@@ -46,8 +47,8 @@ export const MainGameInfoWrapper = styled.div`
       bottom: 0%;
       left: -1%;
       margin: 10% 20% -1%;
-      opacity: 0.02;
-  }
+      opacity: 0.1;
+  } */
 
 `;
 
