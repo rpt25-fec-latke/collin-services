@@ -16,34 +16,6 @@ export const Container = styled.div`
   font-weight: normal;
   z-index: 1;
 
-  .modal_top_bar {
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(to right, #00ccff, #3366ff);
-  }
-
-  .newmodal_header {
-    padding: 0px 0px 0px 0px;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    font-weight: 300;
-    font-size: 32px;
-    line-height: 36px;
-    letter-spacing: 2px;
-    color: #ffffff;
-    text-transform: uppercase;
-    flex-shrink: 0;
-
-    .title_text {
-      padding: 32px 32px 0px 32px;
-      display: block;
-    }
-  }
-  .newmodal_content_border {
-    padding: 0 1px 1px 1px;
-    display: flex;
-  }
   .newmodal_content {
 
     width: 100%;
@@ -101,11 +73,76 @@ export const Container = styled.div`
           text-decoration: none !important;
           color: #67c1f5 !important;
           background: rgba( 103, 193, 245, 0.2 );
+          padding: 0 15px;
+          font-size: 15px;
+          line-height: 30px;
         }
       }
     }
   }
+`;
 
+export const TopBar = styled.div`
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, #00ccff, #3366ff);
+`;
+
+export const Header = styled.div`
+  padding: 0px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-transform: uppercase;
+  flex-shrink: 0;
+`;
+
+export const TitleText = styled.div`
+  padding: 25px 25px 0px 25px;
+  display: block;
+`;
+
+export const ModalContentBorder = styled.div`
+  padding: 0 1px 1px 1px;
+  display: flex;
+`;
+
+export const ModalContentWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  overflow: auto;
+  word-wrap: break-word;
+  padding: 16px 25px 25px;
+  color: #acb2b8;
+  position: relative;
+`;
+
+export const LeftSideContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const SideSeparator = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 272px;
+  width: 1px;
+  background-color: #3c3d3e;
+`;
+
+export const TagTitle = styled.div`
+  font-family: "Motiva Sans", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: start;
+  letter-spacing: normal;
+  color: #969696;
 `;
 
 export const TagsWrapper = styled.div`
