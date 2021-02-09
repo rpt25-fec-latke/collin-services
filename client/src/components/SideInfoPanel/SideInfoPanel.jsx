@@ -28,7 +28,7 @@ const SideInfoPanel = () => {
           Recent Reviews:
         </ReviewInfo>
         <OverallReview>
-          <ToolTip className="tooltip">review stats</ToolTip>
+          <ToolTip className="tooltip">review stats 1</ToolTip>
           {sidePanelInfo.recent_reviews}
         </OverallReview>
         <ReviewInfo>
@@ -40,7 +40,7 @@ const SideInfoPanel = () => {
           All Reviews:
         </ReviewInfo>
         <OverallReview>
-          <ToolTip className="tooltip">review stats</ToolTip>
+          <ToolTip className="tooltip">review stats 2</ToolTip>
           {sidePanelInfo.all_reviews}
         </OverallReview>
         <ReviewInfo>
@@ -76,7 +76,7 @@ const SideInfoPanel = () => {
         </ReviewInfo>
         <TagList>
           {sidePanelInfo.popular_tags
-          && sidePanelInfo.popular_tags.slice(0, 2).map((tag, i) => (
+          && sidePanelInfo.popular_tags.slice(0, 3).map((tag, i) => (
             <Tag key={i}>{tag}</Tag>
           ))}
           <Tag onClick={() => setModal(true)}>+</Tag>

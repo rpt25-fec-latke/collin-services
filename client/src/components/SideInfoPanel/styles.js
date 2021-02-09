@@ -54,7 +54,7 @@ export const OverallReview = styled.div`
 
   &:hover .tooltip {
     cursor: pointer;
-    opacity: 1;
+    visibility: visible;
   }
 `;
 
@@ -148,12 +148,13 @@ export const ToolTip = styled.span`
   color: #3d3d3f;
   position: absolute;
   box-shadow: 0 0 5px #000;
-  opacity: 0;
+  visibility: hidden;
   font-size: 11px;
   text-shadow: none;
   font-weight: normal;
   border-radius: 3px;
   white-space: normal;
   transition: opacity .5s;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
+
 `;
