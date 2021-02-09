@@ -1,21 +1,24 @@
 import React, { useContext } from 'react';
 import {
-  GameTitle, CategoryTree, CategoryWrapper, GameTitleWrapper,
+  GameTitle, CategoryTree, Wrapper, Category,
 } from './styles';
 import GamesContext from '../../context';
 
 const Header = () => {
   const { gameTitle, gameGenre } = useContext(GamesContext);
   return (
-    <>
+    <Wrapper>
       <CategoryTree>
-        All Games
-        {` > ${gameGenre} Games > ${gameTitle}`}
+        <Category>All Games</Category>
+        {' > '}
+        <Category>{gameGenre}</Category>
+        {' > '}
+        <Category>{gameTitle}</Category>
       </CategoryTree>
       <GameTitle>
         {gameTitle}
       </GameTitle>
-    </>
+    </Wrapper>
 
   );
 };

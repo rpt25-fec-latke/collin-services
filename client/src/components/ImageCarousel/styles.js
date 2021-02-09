@@ -1,9 +1,19 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 4;
+`;
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
 `;
 
 export const MainImage = styled.img`
@@ -12,7 +22,12 @@ export const MainImage = styled.img`
   border-left: 30px solid black;
   border-right: 30px solid black;
   margin-bottom: 2px;
+  transition: visibility 0.5s, opacity 0.5s;
+
+
+
 `;
+// ${(props) => props.imageFade > 0 && `animation: 2s ${fadeIn} ease-in`}
 
 export const ImageStripWrapper = styled.div`
   display: flex;
