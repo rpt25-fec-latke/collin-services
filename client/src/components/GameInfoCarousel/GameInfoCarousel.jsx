@@ -63,6 +63,26 @@ const GameInfoCarousel = () => {
         const [{ video_photo_carousel: imageCarousel }] = gameInfo;
         const [{ genre }] = gameInfo;
         const [{ game_title: title }] = gameInfo;
+        const {
+          reviewStats:
+            { overallReviewsRatingGroupHoverMessage: allHover },
+        } = reviewsInfo;
+        const {
+          reviewStats:
+            { recentReviewsRatingGroupHoverMessage: recentHover },
+        } = reviewsInfo;
+        const {
+          reviewStats:
+            {
+              overallRatingGroup: { ratingGroup: allReview },
+            },
+        } = reviewsInfo;
+        const {
+          reviewStats:
+            {
+              recentRatingGroup: { ratingGroup: recentReview },
+            },
+        } = reviewsInfo;
         setBackgroundImage(imageCarousel[10]);
         setCarousel(imageCarousel.slice(0, 10));
         setMainImage(imageCarousel[0]);
@@ -70,11 +90,18 @@ const GameInfoCarousel = () => {
         setTitle(title);
         setPanelImg(imageCarousel[11]);
         setPanelInfo(gameInfo[0]);
-        // setRecentReviews({
-        //   review:
-        // })
+        setRecentReviews({
+          recentReview,
+          allHover,
+          total: reviewsInfo.reviewStats.totalRecentReviewCount,
+        });
+        setAllReviews({
+          allReview,
+          recentHover,
+          total: reviewsInfo.reviewStats.totalReviewCount,
+        });
       })
-      .catch((err) => console.log('ERROR', err));
+      .catch((err) => console.log(err));
     return () => {
       source.cancel('unsubscribe axios request');
     };

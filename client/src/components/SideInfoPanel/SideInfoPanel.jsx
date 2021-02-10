@@ -25,6 +25,7 @@ const SideInfoPanel = () => {
     recentReviews,
     allReviews,
   } = useContext(GamesContext);
+  console.log(recentReviews);
   return (
     <Container>
       <SidePanelImg src={sidePanelImg} />
