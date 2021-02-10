@@ -91,13 +91,13 @@ const GameInfoCarousel = () => {
         setPanelImg(imageCarousel[11]);
         setPanelInfo(gameInfo[0]);
         setRecentReviews({
-          recentReview,
-          allHover,
+          review: recentReview,
+          hovMessage: recentHover,
           total: reviewsInfo.reviewStats.totalRecentReviewCount,
         });
         setAllReviews({
-          allReview,
-          recentHover,
+          review: allReview,
+          hovMessage: allHover,
           total: reviewsInfo.reviewStats.totalReviewCount,
         });
       })

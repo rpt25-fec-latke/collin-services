@@ -25,7 +25,7 @@ const SideInfoPanel = () => {
     recentReviews,
     allReviews,
   } = useContext(GamesContext);
-  console.log(recentReviews);
+  console.log(recentReviews, allReviews);
   return (
     <Container>
       <SidePanelImg src={sidePanelImg} />
@@ -35,11 +35,11 @@ const SideInfoPanel = () => {
           Recent Reviews:
         </ReviewInfo>
         <OverallReview>
-          <ToolTip className="tooltip">review stats 1</ToolTip>
-          {sidePanelInfo.recent_reviews}
+          <ToolTip className="tooltip">{recentReviews.hovMessage}</ToolTip>
+          {recentReviews.review}
         </OverallReview>
         <ReviewInfo>
-          {`(${sidePanelInfo.recent_reviews_count})`}
+          {`(${recentReviews.total})`}
         </ReviewInfo>
       </ReviewWrapper>
       <ReviewWrapper>
@@ -47,11 +47,11 @@ const SideInfoPanel = () => {
           All Reviews:
         </ReviewInfo>
         <OverallReview>
-          <ToolTip className="tooltip">review stats 2</ToolTip>
-          {sidePanelInfo.all_reviews}
+          <ToolTip className="tooltip">{allReviews.hovMessage}</ToolTip>
+          {allReviews.review}
         </OverallReview>
         <ReviewInfo>
-          {`(${sidePanelInfo.all_reviews_count})`}
+          {`(${allReviews.total})`}
         </ReviewInfo>
       </ReviewWrapper>
       <ReleaseDateWrapper>

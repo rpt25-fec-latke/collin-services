@@ -20,7 +20,6 @@ const apiObj = {
 };
 
 const server = setupServer(rest.get('/game_carousel_info', (req, res, ctx) => {
-  console.log('in here just fine');
   return res(
     ctx.status(200),
     ctx.json(apiObj),
