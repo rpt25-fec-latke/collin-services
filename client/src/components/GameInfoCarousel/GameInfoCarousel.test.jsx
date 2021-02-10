@@ -9,7 +9,7 @@ import GameInfoCarousel from './GameInfoCarousel';
 const server = setupServer(rest.get('/game_carousel_info', (req, res, ctx) => {
   return res(
     ctx.status(200),
-    ctx.json([{ video_photo_carousel: ['url', 'url2'] }]),
+    ctx.json({ gameInfo: [{ video_photo_carousel: ['url', 'url2'] }], reviewInfo: null }),
   );
 }));
 

@@ -15,10 +15,12 @@ import {
   ToolTip,
   QuestionMarkHover,
   TagList,
-  TagsTagsTags,
+  TagsSpacer,
   SpanTags,
   RightSideContent,
-  SignIn,
+  SignInButton,
+  SignInHeader,
+  SignInInfo,
 } from './styles';
 import GamesContext from '../../context';
 
@@ -50,15 +52,15 @@ function Modal() {
                 </TagTitle>
                 {sidePanelInfo.popular_tags.map((tag, i) => (
                   <TagList key={`${i}a`}>
-                    <TagsTagsTags key={`${i}b`} />
+                    <TagsSpacer key={`${i}b`} />
                     <SpanTags key={`${i}c`}>{tag}</SpanTags>
                   </TagList>
                 ))}
               </LeftSideContent>
               <RightSideContent>
-                <h2>Sign In</h2>
-                <p>Sign in to add your own tags to this product.</p>
-                <SignIn>Sign In</SignIn>
+                <SignInHeader>Sign In</SignInHeader>
+                <SignInInfo>Sign in to add your own tags to this product.</SignInInfo>
+                <SignInButton>Sign In</SignInButton>
               </RightSideContent>
             </TagWrapper>
           </ModalContentWrapper>

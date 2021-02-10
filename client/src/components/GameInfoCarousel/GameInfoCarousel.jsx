@@ -25,6 +25,8 @@ const GameInfoCarousel = () => {
   const [gameTitle, setTitle] = useState('');
   const [sidePanelImg, setPanelImg] = useState('');
   const [sidePanelInfo, setPanelInfo] = useState({});
+  const [recentReviews, setRecentReviews] = useState({});
+  const [allReviews, setAllReviews] = useState({});
   const [showModal, setModal] = useState(false);
   const [autoIterate, setAutoIterate] = useState(1);
   const [stopPicAutomation, setStopPicAuto] = useState(false);
@@ -52,23 +54,28 @@ const GameInfoCarousel = () => {
   }, [mainImage, autoIterate]);
 
   useEffect(() => {
+    console.log('IMAGES', gameId);
     const source = axios.CancelToken.source();
     axios.get(`/game_carousel_info?id=${gameId}`, {
       cancelToken: source.token,
     })
-      .then(({ data }) => {
-        const [{ video_photo_carousel: imageCarousel }] = data;
-        const [{ genre }] = data;
-        const [{ game_title: title }] = data;
+      .then(({ data: { gameInfo, reviewsInfo } }) => {
+        console.log('yo');
+        const [{ video_photo_carousel: imageCarousel }] = gameInfo;
+        // const [{ genre }] = gameInfo;
+        // const [{ game_title: title }] = gameInfo;
         setBackgroundImage(imageCarousel[10]);
         setCarousel(imageCarousel.slice(0, 10));
         setMainImage(imageCarousel[0]);
-        setGenre(genre);
-        setTitle(title);
-        setPanelImg(imageCarousel[11]);
-        setPanelInfo(data[0]);
+        // setGenre(genre);
+        // setTitle(title);
+        // setPanelImg(imageCarousel[11]);
+        // setPanelInfo(gameInfo[0]);
+        // setRecentReviews({
+        //   review:
+        // })
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log('ERROR', err));
     return () => {
       source.cancel('unsubscribe axios request');
     };
@@ -87,6 +94,8 @@ const GameInfoCarousel = () => {
       showModal,
       setModal,
       setStopPicAuto,
+      recentReviews,
+      allReviews,
     }}
     >
       {(sidePanelInfo.game_id && images.length === 10)

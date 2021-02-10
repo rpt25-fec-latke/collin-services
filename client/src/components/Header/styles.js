@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   width: 890px;
   align-items: flex-start;
   flex-grow: 3;
-  position:relative
+  position: relative
 `;
 
 export const GameTitle = styled.div`

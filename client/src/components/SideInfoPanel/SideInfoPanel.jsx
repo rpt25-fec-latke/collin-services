@@ -18,7 +18,13 @@ import {
 import GamesContext from '../../context';
 
 const SideInfoPanel = () => {
-  const { sidePanelImg, sidePanelInfo, setModal } = useContext(GamesContext);
+  const {
+    sidePanelImg,
+    sidePanelInfo,
+    setModal,
+    recentReviews,
+    allReviews,
+  } = useContext(GamesContext);
   return (
     <Container>
       <SidePanelImg src={sidePanelImg} />

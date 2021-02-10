@@ -91,7 +91,6 @@ export const TagTitle = styled.div`
 `;
 
 export const ToolTip = styled.div`
-  /* max-width: 275px; */
   width: 250px;
   padding: 5px;
   background-color:#c2c2c2;
@@ -105,7 +104,7 @@ export const ToolTip = styled.div`
   border-radius: 3px;
   white-space: normal;
   transition: opacity .5s;
-  bottom: 40px;
+  bottom: 300px;
   left: 35px;
   z-index: 3;
 
@@ -121,7 +120,6 @@ export const QuestionMarkHover = styled.span`
 
   &:hover ${ToolTip} {
     visibility: visible;
-    /* position: relative; */
   }
 `;
 
@@ -139,7 +137,7 @@ export const TagList = styled.div`
     margin-bottom: 2px;
 `;
 
-export const TagsTagsTags = styled.div`
+export const TagsSpacer = styled.div`
   margin-left: 4px;
 `;
 
@@ -152,26 +150,52 @@ export const SpanTags = styled.span`
   box-shadow: none;
   margin-right: 2px;
   border-radius: 2px;
-  cursor: pointer;
   margin-bottom: 3px;
   max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &:hover {
+    background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
+    color: white;
+    cursor: default;
+  }
 `;
 
-export const SignIn = styled.div`
+export const SignInButton = styled.div`
   border-radius: 2px;
   border: none;
   padding: 1px;
   display: inline-block;
-  cursor: pointer;
-  text-decoration: none !important;
-  color: #67c1f5 !important;
+  text-decoration: none;
+  color: #67c1f5;
   background: rgba( 103, 193, 245, 0.2 );
   padding: 0 15px;
   font-size: 15px;
   line-height: 30px;
+
+  &:hover {
+    background: linear-gradient( -60deg, #417a9b 5%,#67c1f5 95%);
+    color: white;
+    cursor: default;
+  }
+`;
+
+export const SignInHeader = styled.div`
+  font-size: 14px;
+  text-align: start;
+  line-height: 20px;
+  letter-spacing: normal;
+  color: #969696;
+`;
+
+export const SignInInfo = styled.p`
+  font-size: 14px;
+  text-align: start;
+  line-height: 17px;
+  letter-spacing: normal;
+  color: #acb2b8;
 `;
 
 export const Overlay = styled.div`
