@@ -16,7 +16,16 @@ const apiObj = {
       popular_tags: ['cool beans', 'sweet'],
     },
   ],
-  reviewsInfo: null,
+  reviewsInfo: {
+    reviewStats: {
+      overallReviewsRatingGroupHoverMessage: 'hover message',
+      recentReviewsRatingGroupHoverMessage: 'hover message',
+      totalReviewCount: 20,
+      totalRecentReviewCount: 5,
+      overallRatingGroup: { ratingGroup: 'Negative' },
+      recentRatingGroup: { ratingGroup: 'Sick' },
+    },
+  },
 };
 
 const server = setupServer(rest.get('/game_carousel_info', (req, res, ctx) => {
