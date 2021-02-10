@@ -7,4 +7,3 @@ export default {
     sidePanel: 'Arial, Helvetica, sans-serif;',
   },
 };
-// linear-gradient(-60deg, rgb(65, 122, 155)

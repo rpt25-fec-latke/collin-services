@@ -59,17 +59,16 @@ const GameInfoCarousel = () => {
       cancelToken: source.token,
     })
       .then(({ data: { gameInfo, reviewsInfo } }) => {
-        console.log('yo');
         const [{ video_photo_carousel: imageCarousel }] = gameInfo;
-        // const [{ genre }] = gameInfo;
-        // const [{ game_title: title }] = gameInfo;
+        const [{ genre }] = gameInfo;
+        const [{ game_title: title }] = gameInfo;
         setBackgroundImage(imageCarousel[10]);
         setCarousel(imageCarousel.slice(0, 10));
         setMainImage(imageCarousel[0]);
-        // setGenre(genre);
-        // setTitle(title);
-        // setPanelImg(imageCarousel[11]);
-        // setPanelInfo(gameInfo[0]);
+        setGenre(genre);
+        setTitle(title);
+        setPanelImg(imageCarousel[11]);
+        setPanelInfo(gameInfo[0]);
         // setRecentReviews({
         //   review:
         // })
@@ -97,16 +96,14 @@ const GameInfoCarousel = () => {
       allReviews,
     }}
     >
-      {(sidePanelInfo.game_id && images.length === 10)
-      && (
-      <Container backgroundImage={backgroundImage}>
-        <Modal />
-        <Wrapper>
-          <Header />
-          <BackgroundWaterMark>
-            <MainGameInfoWrapper backgroundImage={backgroundImage}>
-              {!images.length ? <div data-testid="loading" />
-                : (
+      {(sidePanelInfo.game_id && images.length)
+        ? (
+          <Container backgroundImage={backgroundImage}>
+            <Modal />
+            <Wrapper>
+              <Header />
+              <BackgroundWaterMark>
+                <MainGameInfoWrapper backgroundImage={backgroundImage}>
                   <>
                     <ImageCarouselWrapper data-testid="images-rendering">
                       <ImageCarousel />
@@ -115,12 +112,11 @@ const GameInfoCarousel = () => {
                       <SideInfoPanel />
                     </SideInfoPanelWrapper>
                   </>
-                )}
-            </MainGameInfoWrapper>
-          </BackgroundWaterMark>
-        </Wrapper>
-      </Container>
-      )}
+                </MainGameInfoWrapper>
+              </BackgroundWaterMark>
+            </Wrapper>
+          </Container>
+        ) : <div data-testid="loading" /> }
     </GamesContext.Provider>
   );
 };
