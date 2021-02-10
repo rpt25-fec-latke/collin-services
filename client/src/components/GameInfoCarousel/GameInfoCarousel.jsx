@@ -54,7 +54,6 @@ const GameInfoCarousel = () => {
   }, [mainImage, autoIterate]);
 
   useEffect(() => {
-    console.log('IMAGES', gameId);
     const source = axios.CancelToken.source();
     axios.get(`/game_carousel_info?id=${gameId}`, {
       cancelToken: source.token,
