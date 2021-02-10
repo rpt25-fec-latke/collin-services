@@ -59,6 +59,7 @@ const GameInfoCarousel = () => {
       cancelToken: source.token,
     })
       .then(({ data: { gameInfo, reviewsInfo } }) => {
+        console.log(reviewsInfo);
         const [{ video_photo_carousel: imageCarousel }] = gameInfo;
         const [{ genre }] = gameInfo;
         const [{ game_title: title }] = gameInfo;

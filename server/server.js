@@ -18,11 +18,10 @@ app.use(express.static(path.resolve('client', 'dist')));
 const getReviewsInfo = (gameId) => {
   return axios.get(`http://localhost:3001/reviews?id=${gameId}`)
     .then((res) => {
-      console.log('hi');
       return res.data;
     })
     .catch((err) => {
-      console.log('ERROR', err);
+      throw new Error(err);
     });
 };
 
@@ -36,7 +35,6 @@ app.get('/game_carousel_info', async (req, res) => {
       console.log('reviews error', err);
       res.sendStatus(500);
     });
-  console.log('REVIEWS INFO', reviewsInfo);
   db.getInfo(queryId, (err, gameInfo) => {
     if (err) {
       res.status(500).send({ internalServerError: err });
