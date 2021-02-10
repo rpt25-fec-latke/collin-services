@@ -11,6 +11,7 @@
     "start": "nodemon server/initialize.js",
     "start-dev": "nodemon server/express-dev-server.js",
     "test": "jest --detectOpenHandles --testPathIgnorePatterns server/backend-tests",
+    "testbug": "jest GameInfoCarousel",
     "seed": "node ./server/db/seedscript.js",
     "build": "webpack -w",
     "dev-server": "webpack serve"
