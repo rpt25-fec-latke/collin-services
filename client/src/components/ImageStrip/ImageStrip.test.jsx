@@ -3,20 +3,7 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import GamesContext from '../../context';
 
-import GameInfoCarousel from '../GameInfoCarousel/GameInfoCarousel';
-import ImageCarousel from '../ImageCarousel/ImageCarousel';
 import ImageStrip from './ImageStrip';
-
-beforeAll(() => {
-  render(<GameInfoCarousel />);
-  const images = ['https://image1.s3.com', 'https://image2.s3.com'];
-  const mainImage = images[0];
-  render(
-    <GamesContext.Provider value={{ images, mainImage }}>
-      <ImageCarousel />
-    </GamesContext.Provider>,
-  );
-});
 
 const renderImageStrip = (setMainImage, setStopPicAuto) => {
   return render(

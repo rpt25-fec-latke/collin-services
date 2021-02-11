@@ -29,7 +29,7 @@ const SideInfoPanel = () => {
     <Container>
       <SidePanelImg src={sidePanelImg} />
       <ShortDescription>{sidePanelInfo.short_description}</ShortDescription>
-      <ReviewWrapper>
+      <ReviewWrapper data-testid="recentReview">
         <ReviewInfo>
           Recent Reviews:
         </ReviewInfo>
@@ -41,7 +41,7 @@ const SideInfoPanel = () => {
           {`(${recentReviews.total})`}
         </ReviewInfo>
       </ReviewWrapper>
-      <ReviewWrapper>
+      <ReviewWrapper data-testid="allReview">
         <ReviewInfo>
           All Reviews:
         </ReviewInfo>
@@ -85,7 +85,7 @@ const SideInfoPanel = () => {
           && sidePanelInfo.popular_tags.slice(0, 3).map((tag, i) => (
             <Tag key={i}>{tag}</Tag>
           ))}
-          <Tag onClick={() => setModal(true)}>+</Tag>
+          <Tag data-testid="modalTag" onClick={() => setModal(true)}>+</Tag>
         </TagList>
       </TagsWrapper>
     </Container>
