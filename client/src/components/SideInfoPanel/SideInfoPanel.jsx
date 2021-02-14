@@ -18,40 +18,46 @@ import {
 import GamesContext from '../../context';
 
 const SideInfoPanel = () => {
-  const { sidePanelImg, sidePanelInfo } = useContext(GamesContext);
-  console.log(sidePanelInfo);
+  const {
+    sidePanelImg,
+    sidePanelInfo,
+    setModal,
+    recentReviews,
+    allReviews,
+  } = useContext(GamesContext);
   return (
     <Container>
       <SidePanelImg src={sidePanelImg} />
       <ShortDescription>{sidePanelInfo.short_description}</ShortDescription>
-      <ReviewWrapper>
+      <ReviewWrapper data-testid="recentReview">
         <ReviewInfo>
           Recent Reviews:
         </ReviewInfo>
         <OverallReview>
-          <ToolTip className="tooltip">review stats</ToolTip>
-          {sidePanelInfo.recent_reviews}
+          <ToolTip className="tooltip">{recentReviews.hovMessage}</ToolTip>
+          {recentReviews.review}
         </OverallReview>
         <ReviewInfo>
-          {`(${sidePanelInfo.recent_reviews_count})`}
+          {`(${recentReviews.total})`}
         </ReviewInfo>
       </ReviewWrapper>
-      <ReviewWrapper>
+      <ReviewWrapper data-testid="allReview">
         <ReviewInfo>
           All Reviews:
         </ReviewInfo>
         <OverallReview>
-          <ToolTip className="tooltip">review stats</ToolTip>
-          {sidePanelInfo.all_reviews}
+          <ToolTip className="tooltip">{allReviews.hovMessage}</ToolTip>
+          {allReviews.review}
         </OverallReview>
         <ReviewInfo>
-          {`(${sidePanelInfo.all_reviews_count})`}
+          {`(${allReviews.total})`}
         </ReviewInfo>
       </ReviewWrapper>
       <ReleaseDateWrapper>
         <ReleaseInfo>Release Date:</ReleaseInfo>
         <ReleaseDate>
-          {sidePanelInfo.release_date && sidePanelInfo.release_date.slice(0, 10)}
+          {sidePanelInfo.release_date
+          && sidePanelInfo.release_date.slice(0, 10)}
         </ReleaseDate>
       </ReleaseDateWrapper>
       <ReviewWrapper>
@@ -75,9 +81,11 @@ const SideInfoPanel = () => {
           Popular user-defined tags for this product:
         </ReviewInfo>
         <TagList>
-          {sidePanelInfo.popular_tags && sidePanelInfo.popular_tags.map((tag, i) => (
+          {sidePanelInfo.popular_tags
+          && sidePanelInfo.popular_tags.slice(0, 3).map((tag, i) => (
             <Tag key={i}>{tag}</Tag>
           ))}
+          <Tag data-testid="modalTag" onClick={() => setModal(true)}>+</Tag>
         </TagList>
       </TagsWrapper>
     </Container>

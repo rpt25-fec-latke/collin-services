@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -11,17 +12,34 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
-app.use(morgan('tiny'));
+app.use(morgan('dev'));
 app.use(express.static(path.resolve('client', 'dist')));
 
-app.get('/game_carousel_info', (req, res) => {
-  console.log('SERVICE HEADERS', req.headers);
-  const queryId = req.query ? req.query.id : 1;
-  db.getInfo(queryId, (err, data) => {
+const getReviewsInfo = (gameId) => {
+  return axios.get(`http://localhost:3001/reviews?id=${gameId}`)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      throw new Error(err);
+    });
+};
+
+app.get('/game_carousel_info', async (req, res) => {
+  const queryId = req.query ? req.query.id : 2;
+  if (queryId < 1 || queryId > 100) {
+    res.sendStatus(500);
+  }
+  const reviewsInfo = await getReviewsInfo(queryId)
+    .catch((err) => {
+      console.log('reviews error', err);
+      res.sendStatus(500);
+    });
+  db.getInfo(queryId, (err, gameInfo) => {
     if (err) {
-      res.send(500);
+      res.status(500).send({ internalServerError: err });
     } else {
-      res.json(data);
+      res.json({ gameInfo, reviewsInfo });
     }
   });
 });

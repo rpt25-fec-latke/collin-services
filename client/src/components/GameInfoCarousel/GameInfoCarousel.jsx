@@ -4,6 +4,7 @@ import axios from 'axios';
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
 import Header from '../Header/Header';
 import SideInfoPanel from '../SideInfoPanel/SideInfoPanel';
+import Modal from '../Modal/Modal';
 
 import {
   MainGameInfoWrapper,
@@ -24,10 +25,11 @@ const GameInfoCarousel = () => {
   const [gameTitle, setTitle] = useState('');
   const [sidePanelImg, setPanelImg] = useState('');
   const [sidePanelInfo, setPanelInfo] = useState({});
-  const [imageFade, setImageFade] = useState(0);
-  const [show, setShow] = useState(false);
-  const openModal = () => setShow(true);
-  const closeModal = () => setShow(false);
+  const [recentReviews, setRecentReviews] = useState({});
+  const [allReviews, setAllReviews] = useState({});
+  const [showModal, setModal] = useState(false);
+  const [autoIterate, setAutoIterate] = useState(1);
+  const [stopPicAutomation, setStopPicAuto] = useState(false);
   const queryId = window.location.search.slice(4);
 
   useEffect(() => {
@@ -36,21 +38,67 @@ const GameInfoCarousel = () => {
   }, []);
 
   useEffect(() => {
+    if (images[autoIterate] === undefined) {
+      setAutoIterate(0);
+    }
+    let picTraverse;
+    if (!stopPicAutomation) {
+      picTraverse = setTimeout(() => {
+        setMainImage(images[autoIterate]);
+        setAutoIterate(autoIterate + 1);
+      }, 4000);
+    }
+    return () => {
+      clearTimeout(picTraverse);
+    };
+  }, [mainImage, autoIterate]);
+
+  useEffect(() => {
     const source = axios.CancelToken.source();
     axios.get(`/game_carousel_info?id=${gameId}`, {
       cancelToken: source.token,
     })
-      .then(({ data }) => {
-        const [{ video_photo_carousel: imageCarousel }] = data;
-        const [{ genre }] = data;
-        const [{ game_title: title }] = data;
+      .then(({ data: { gameInfo, reviewsInfo } }) => {
+        const [{ video_photo_carousel: imageCarousel }] = gameInfo;
+        const [{ genre }] = gameInfo;
+        const [{ game_title: title }] = gameInfo;
+        const {
+          reviewStats:
+            { overallReviewsRatingGroupHoverMessage: allHover },
+        } = reviewsInfo;
+        const {
+          reviewStats:
+            { recentReviewsRatingGroupHoverMessage: recentHover },
+        } = reviewsInfo;
+        const {
+          reviewStats:
+            {
+              overallRatingGroup: { ratingGroup: allReview },
+            },
+        } = reviewsInfo;
+        const {
+          reviewStats:
+            {
+              recentRatingGroup: { ratingGroup: recentReview },
+            },
+        } = reviewsInfo;
         setBackgroundImage(imageCarousel[10]);
         setCarousel(imageCarousel.slice(0, 10));
         setMainImage(imageCarousel[0]);
         setGenre(genre);
         setTitle(title);
         setPanelImg(imageCarousel[11]);
-        setPanelInfo(data[0]);
+        setPanelInfo(gameInfo[0]);
+        setRecentReviews({
+          review: recentReview,
+          hovMessage: recentHover,
+          total: reviewsInfo.reviewStats.totalRecentReviewCount,
+        });
+        setAllReviews({
+          review: allReview,
+          hovMessage: allHover,
+          total: reviewsInfo.reviewStats.totalReviewCount,
+        });
       })
       .catch((err) => console.log(err));
     return () => {
@@ -68,19 +116,21 @@ const GameInfoCarousel = () => {
       gameTitle,
       sidePanelImg,
       sidePanelInfo,
-      imageFade,
-      setImageFade,
+      showModal,
+      setModal,
+      setStopPicAuto,
+      recentReviews,
+      allReviews,
     }}
     >
-      {(sidePanelInfo.game_id && images.length === 10)
-      && (
-      <Container>
-        <Wrapper>
-          <Header />
-          <BackgroundWaterMark>
-            <MainGameInfoWrapper backgroundImage={backgroundImage}>
-              {!images.length ? <div data-testid="loading" />
-                : (
+      {(sidePanelInfo.game_id && images.length)
+        ? (
+          <Container backgroundImage={backgroundImage}>
+            <Modal />
+            <Wrapper>
+              <Header />
+              <BackgroundWaterMark>
+                <MainGameInfoWrapper backgroundImage={backgroundImage}>
                   <>
                     <ImageCarouselWrapper data-testid="images-rendering">
                       <ImageCarousel />
@@ -89,12 +139,11 @@ const GameInfoCarousel = () => {
                       <SideInfoPanel />
                     </SideInfoPanelWrapper>
                   </>
-                )}
-            </MainGameInfoWrapper>
-          </BackgroundWaterMark>
-        </Wrapper>
-      </Container>
-      )}
+                </MainGameInfoWrapper>
+              </BackgroundWaterMark>
+            </Wrapper>
+          </Container>
+        ) : <div data-testid="loading" /> }
     </GamesContext.Provider>
   );
 };
