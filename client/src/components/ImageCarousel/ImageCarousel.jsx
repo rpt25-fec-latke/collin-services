@@ -7,9 +7,13 @@ import GamesContext from '../../context';
 
 const ImageCarousel = () => {
   const { images, mainImage } = useContext(GamesContext);
+
   return (
     <Container>
-      <MainImage src={mainImage} data-testid="mainImageDisplay" />
+      <MainImage
+        src={mainImage}
+        data-testid="mainImageDisplay"
+      />
       <ImageStripWrapper>
         {images.map((image, i) => <ImageStrip key={i} image={image} />)}
       </ImageStripWrapper>

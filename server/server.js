@@ -25,6 +25,10 @@ const getReviewsInfo = (gameId) => {
     });
 };
 
+app.get('/', (req, res) => {
+  res.end('success');
+});
+
 app.get('/game_carousel_info', async (req, res) => {
   const queryId = req.query ? req.query.id : 2;
   if (queryId < 1 || queryId > 100) {
@@ -32,13 +36,15 @@ app.get('/game_carousel_info', async (req, res) => {
   }
   const reviewsInfo = await getReviewsInfo(queryId)
     .catch((err) => {
-      console.log('reviews error', err);
+      console.log('⛑PLEASE TURN ON REVIEWS SERVICE⛑', err);
       res.sendStatus(500);
     });
   db.getInfo(queryId, (err, gameInfo) => {
     if (err) {
+      console.log('here');
       res.status(500).send({ internalServerError: err });
     } else {
+      console.log(gameInfo, reviewsInfo);
       res.json({ gameInfo, reviewsInfo });
     }
   });

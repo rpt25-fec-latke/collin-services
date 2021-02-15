@@ -36,22 +36,22 @@ const GameInfoCarousel = () => {
     const currentId = queryId || gameId;
     setGameId(currentId);
   }, []);
-
-  useEffect(() => {
-    if (images[autoIterate] === undefined) {
-      setAutoIterate(0);
-    }
-    let picTraverse;
-    if (!stopPicAutomation) {
-      picTraverse = setTimeout(() => {
-        setMainImage(images[autoIterate]);
-        setAutoIterate(autoIterate + 1);
-      }, 4000);
-    }
-    return () => {
-      clearTimeout(picTraverse);
-    };
-  }, [mainImage, autoIterate]);
+  // SET TIMEOUT DISABLED
+  // useEffect(() => {
+  //   if (images[autoIterate] === undefined) {
+  //     setAutoIterate(0);
+  //   }
+  //   let picTraverse;
+  //   if (!stopPicAutomation) {
+  //     picTraverse = setTimeout(() => {
+  //       setMainImage(images[autoIterate]);
+  //       setAutoIterate(autoIterate + 1);
+  //     }, 4000);
+  //   }
+  //   return () => {
+  //     clearTimeout(picTraverse);
+  //   };
+  // }, [mainImage, autoIterate]);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -59,6 +59,7 @@ const GameInfoCarousel = () => {
       cancelToken: source.token,
     })
       .then(({ data: { gameInfo, reviewsInfo } }) => {
+        console.log(gameInfo, reviewsInfo);
         const [{ video_photo_carousel: imageCarousel }] = gameInfo;
         const [{ genre }] = gameInfo;
         const [{ game_title: title }] = gameInfo;

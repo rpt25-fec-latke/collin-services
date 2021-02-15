@@ -35,20 +35,10 @@ db.once('open', () => {
 
       const dataFormat = {
         game_id: seeder,
-        category_tree: {
-          genres: {
-            genre_name: [gameTitle],
-          },
-        },
         genre: currentGenre,
         game_title: gameTitle,
         video_photo_carousel: gamePics,
-        game_photo: gamePics[0],
         short_description: faker.lorem.sentences(),
-        recent_reviews: reviews[randomIndex],
-        recent_reviews_count: faker.random.number(),
-        all_reviews: reviews[randomIndex],
-        all_reviews_count: faker.random.number(),
         release_date: faker.date.between('2012-01-01', '2021-01-20'),
         developer: faker.company.companyName(),
         publisher: faker.company.companyName(),
