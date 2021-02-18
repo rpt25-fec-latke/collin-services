@@ -3,12 +3,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import GamesContext from '../../context';
 
-import GameInfoCarousel from '../GameInfoCarousel/GameInfoCarousel';
 import ImageCarousel from './ImageCarousel';
-
-beforeAll(() => {
-  render(<GameInfoCarousel />);
-});
 
 const renderImageCarousel = (images, mainImage) => {
   return render(

@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 890px;
+  align-items: flex-start;
+  flex-grow: 3;
+  position: relative
+`;
+
 export const GameTitle = styled.div`
   font-family: "Motiva Sans", sans-serif;
   font-size: 26px;
@@ -13,6 +22,7 @@ export const CategoryTree = styled.div`
   font-family: "Motiva Sans", sans-serif;
   font-size: 12px;
   color: #56707f;
+  position:relative
 `;
 
 export const Category = styled.div`
@@ -21,12 +31,5 @@ export const Category = styled.div`
     color: #ffffff;
     cursor: pointer;
   }
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 890px;
-  align-items: flex-start;
-  flex-grow: 3;
+  position:relative
 `;

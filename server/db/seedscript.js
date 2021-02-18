@@ -22,7 +22,6 @@ const s3MediaFetcher = (genre) => {
 db.on('error', console.error.bind(console, 'mongoose connection error:'));
 
 db.once('open', () => {
-  console.log('successfully connected to mongoose');
   (async () => {
     let seeder = 1;
 
@@ -45,7 +44,7 @@ db.once('open', () => {
         game_title: gameTitle,
         video_photo_carousel: gamePics,
         game_photo: gamePics[0],
-        short_description: faker.lorem.paragraph(),
+        short_description: faker.lorem.sentences(),
         recent_reviews: reviews[randomIndex],
         recent_reviews_count: faker.random.number(),
         all_reviews: reviews[randomIndex],
@@ -54,9 +53,18 @@ db.once('open', () => {
         developer: faker.company.companyName(),
         publisher: faker.company.companyName(),
         popular_tags: [
-          faker.company.catchPhraseNoun(),
-          faker.company.catchPhraseNoun(),
-          faker.company.catchPhrase(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
+          faker.company.catchPhraseDescriptor(),
         ],
       };
       await saveSeed(dataFormat);

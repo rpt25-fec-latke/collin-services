@@ -12,8 +12,9 @@
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+2. [Requirements](#requirements)
+3. [Development](#development)
+3. [Seed Script](#seedscript)
 
 ## Usage
 
@@ -32,8 +33,6 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
 From within the root directory:
 
-```sh
-npm install -g webpack
 npm install
-```
+npm install nodemon (if not installed globally)
 
