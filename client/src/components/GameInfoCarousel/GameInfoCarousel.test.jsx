@@ -7,15 +7,15 @@ import { setupServer } from 'msw/node';
 import { ThemeProvider } from 'styled-components';
 import GameInfoCarousel from './GameInfoCarousel';
 import Theme from '../styles/theme';
+import dataDestructuring from './dataDestructuring';
 
 const apiObj = {
-  gameInfo: [
+  metaAndGameInfo:
     {
       video_photo_carousel: ['url', 'url2'],
       game_id: 1,
       popular_tags: ['cool beans', 'sweet'],
     },
-  ],
   reviewsInfo: {
     reviewStats: {
       overallReviewsRatingGroupHoverMessage: 'hover message',

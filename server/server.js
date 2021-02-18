@@ -24,15 +24,14 @@ app.get('/game_carousel_info', async (req, res) => {
 
   const reviewsInfo = await getReviewsInfo(queryId)
     .catch((err) => {
-      console.log('REVIEWS Error', err);
+      console.log('REVIEWS', err);
       return reviewsFailedToLoad();
     });
   const metaData = await getMetaData(queryId)
     .catch((err) => {
-      console.log('Metadata Error', err);
+      console.log('METADATA', err);
       return metaFailedToLoad();
     });
-  console.log(metaData);
 
   db.getInfo(queryId, (err, gameInfo) => {
     if (err) {

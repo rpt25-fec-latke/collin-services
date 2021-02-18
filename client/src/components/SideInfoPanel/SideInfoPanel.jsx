@@ -26,7 +26,7 @@ const SideInfoPanel = () => {
     recentReviews,
     allReviews,
   } = useContext(GamesContext);
-  console.log(sidePanelInfo.release_date);
+
   return (
     <Container>
       <SidePanelImg src={sidePanelImg} />
@@ -58,8 +58,11 @@ const SideInfoPanel = () => {
       <ReleaseDateWrapper>
         <ReleaseInfo>Release Date:</ReleaseInfo>
         <ReleaseDate>
-          {sidePanelInfo.release_date
-          && moment(sidePanelInfo.release_date).format('MMM D, YYYY')}
+          {
+            !sidePanelInfo.release_date
+              ? ''
+              : moment(new Date(sidePanelInfo.release_date)).format('MMM D, YYYY')
+          }
         </ReleaseDate>
       </ReleaseDateWrapper>
       <ReviewWrapper>

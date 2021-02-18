@@ -47,7 +47,7 @@ export const MainGameInfoWrapper = styled.div`
     left: 0px;
     z-index: -1;
     margin: 10% 20% -1%;
-    opacity: 0.07;
+    opacity: 0.06;
   }
 
 `;
