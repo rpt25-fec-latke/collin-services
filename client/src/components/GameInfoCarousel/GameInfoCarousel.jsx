@@ -5,6 +5,7 @@ import ImageCarousel from '../ImageCarousel/ImageCarousel';
 import Header from '../Header/Header';
 import SideInfoPanel from '../SideInfoPanel/SideInfoPanel';
 import Modal from '../Modal/Modal';
+import dataDestructuring from './dataDestructuring';
 
 import {
   MainGameInfoWrapper,
@@ -32,10 +33,6 @@ const GameInfoCarousel = () => {
   const [stopPicAutomation, setStopPicAuto] = useState(false);
   const queryId = window.location.search.slice(4);
 
-  useEffect(() => {
-    const currentId = queryId || gameId;
-    setGameId(currentId);
-  }, []);
   // SET TIMEOUT DISABLED
   // useEffect(() => {
   //   if (images[autoIterate] === undefined) {
@@ -54,42 +51,28 @@ const GameInfoCarousel = () => {
   // }, [mainImage, autoIterate]);
 
   useEffect(() => {
+    const currentId = queryId || gameId;
+    setGameId(currentId);
     const source = axios.CancelToken.source();
     axios.get(`/game_carousel_info?id=${gameId}`, {
       cancelToken: source.token,
     })
-      .then(({ data: { gameInfo, reviewsInfo } }) => {
-        console.log(gameInfo, reviewsInfo);
-        const [{ video_photo_carousel: imageCarousel }] = gameInfo;
-        const [{ genre }] = gameInfo;
-        const [{ game_title: title }] = gameInfo;
-        const {
-          reviewStats:
-            { overallReviewsRatingGroupHoverMessage: allHover },
-        } = reviewsInfo;
-        const {
-          reviewStats:
-            { recentReviewsRatingGroupHoverMessage: recentHover },
-        } = reviewsInfo;
-        const {
-          reviewStats:
-            {
-              overallRatingGroup: { ratingGroup: allReview },
-            },
-        } = reviewsInfo;
-        const {
-          reviewStats:
-            {
-              recentRatingGroup: { ratingGroup: recentReview },
-            },
-        } = reviewsInfo;
+      .then(({ data: { metaAndGameInfo, reviewsInfo } }) => {
+        const [imageCarousel,
+          genre,
+          title,
+          allHover,
+          recentHover,
+          allReview,
+          recentReview] = dataDestructuring(metaAndGameInfo, reviewsInfo);
+
         setBackgroundImage(imageCarousel[10]);
         setCarousel(imageCarousel.slice(0, 10));
         setMainImage(imageCarousel[0]);
         setGenre(genre);
         setTitle(title);
         setPanelImg(imageCarousel[11]);
-        setPanelInfo(gameInfo[0]);
+        setPanelInfo(metaAndGameInfo);
         setRecentReviews({
           review: recentReview,
           hovMessage: recentHover,

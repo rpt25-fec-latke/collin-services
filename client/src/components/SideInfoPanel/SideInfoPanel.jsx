@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import moment from 'moment';
 import {
   SidePanelImg,
   ShortDescription,
@@ -57,7 +58,7 @@ const SideInfoPanel = () => {
         <ReleaseInfo>Release Date:</ReleaseInfo>
         <ReleaseDate>
           {sidePanelInfo.release_date
-          && sidePanelInfo.release_date.slice(0, 10)}
+          && moment(sidePanelInfo.release_date).format('MMM D, YYYY')}
         </ReleaseDate>
       </ReleaseDateWrapper>
       <ReviewWrapper>
