@@ -25,10 +25,6 @@ const getReviewsInfo = (gameId) => {
     });
 };
 
-app.get('/', (req, res) => {
-  res.end('success');
-});
-
 app.get('/game_carousel_info', async (req, res) => {
   const queryId = req.query ? req.query.id : 2;
   if (queryId < 1 || queryId > 100) {
@@ -48,6 +44,14 @@ app.get('/game_carousel_info', async (req, res) => {
       res.json({ gameInfo, reviewsInfo });
     }
   });
+});
+
+app.get('/game_info/related', async (req, res) => {
+  const queryId = req.query ? req.query.id : 2;
+  if (queryId < 1 || queryId > 100) {
+    res.sendStatus(500);
+  }
+  // get first 10 games with genre (filter out current id and get 7 games)
 });
 
 module.exports = app;
