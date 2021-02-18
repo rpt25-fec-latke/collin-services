@@ -6,7 +6,8 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 const db = require('./db');
-const routes = require('./routes');
+const { getReviewsInfo, getMetaData } = require('./outgoingRoutes');
+const { combineData, reviewsFailedToLoad, metaFailedToLoad } = require('./utils');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,39 +16,23 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(express.static(path.resolve('client', 'dist')));
 
-const combineData = (gameInfo, metaData) => {
-  const [infoObj] = gameInfo;
-  infoObj.game_title = metaData[4][0];
-  infoObj.developer = metaData[4][2];
-  infoObj.publisher = metaData[4][3];
-  infoObj.release_date = metaData[4][5];
-  return infoObj;
-};
-
 app.get('/game_carousel_info', async (req, res) => {
   const queryId = req.query ? req.query.id : 1;
   if (queryId < 1 || queryId > 100) {
     res.sendStatus(500);
   }
 
-  const reviewsInfo = await routes.getReviewsInfo(queryId)
+  const reviewsInfo = await getReviewsInfo(queryId)
     .catch((err) => {
       console.log('REVIEWS Error', err);
-      res.sendStatus(500);
+      return reviewsFailedToLoad();
     });
-  const metaData = await routes.getMetaData(queryId)
+  const metaData = await getMetaData(queryId)
     .catch((err) => {
       console.log('Metadata Error', err);
-      res.sendStatus(500);
+      return metaFailedToLoad();
     });
-
-  db.getRelatedInfo(queryId)
-    .then((data) => {
-      console.log('GENRE', data.length);
-    })
-    .catch((err) => {
-      console.log('ERROR', err);
-    });
+  console.log(metaData);
 
   db.getInfo(queryId, (err, gameInfo) => {
     if (err) {

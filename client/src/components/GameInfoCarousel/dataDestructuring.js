@@ -1,4 +1,5 @@
 const dataDestructuring = (metaAndGameInfo, reviewsInfo) => {
+  console.log(reviewsInfo);
   const { video_photo_carousel: imageCarousel } = metaAndGameInfo;
   const { genre } = metaAndGameInfo;
   const { game_title: title } = metaAndGameInfo;

@@ -1,7 +1,7 @@
-# Project Name
-Game Information Carousel & Side Panel
-> Project description
-An information section that includes images from the game, a brief description, tags related to the game and other specs.
+# Game Information Carousel & Side Panel
+
+> An information section that includes images from the game, a brief description, tags related to the game and other specs.
+
 ## Related Projects
 reviews section - https://github.com/rpt25-fec-latke/tyler-services
 
@@ -17,9 +17,9 @@ reviews section - https://github.com/rpt25-fec-latke/tyler-services
 1.) Node - 12.16.1
 2.) NPM - 6.14.11
 3.) MongoDB shell - 4.4.1
+5.) All NPM packages should be the most current version.
 
 ## Installation
-
 From within the root directory:
 
 1.) npm install
@@ -28,9 +28,11 @@ From within the root directory:
 4.) npm run build (build bundle)
 
 ## Development
+
 Backend:
-  Created a dev server (express-dev-server) to run on PORT 3008 and refresh on save but unfortunately does not work with styled components.
-  This project is dependent on the Reviews API so I created placeholder data just in case there is a probelm connecting to it.
+  This service is dependent on the Reviews API and the Metadata API so I created 'failed to load' placeholder data just in case there is a probelm connecting to them.
+  SIDE NOTE --- Created a dev server (express-dev-server) to run on PORT 3008 and refresh on save but unfortunately does not work with styled components.
+
 Frontend:
   I'm using primarily React Hooks in conjunction with the Context API. If unfamiliar with hooks, the useState hook is used to store state and set state. The useEffect hook is used similarly to componentDidMount and componentDidUpdate in React. The Context API works in a similar way to Redux in that you have a global state in which you no longer have to pass down state or functions to components. Notice how the Context Provider is wrapping around the component tree.
   This project uses styled-components and utilizes global styles and themes which are both part of styled-components.
@@ -38,7 +40,7 @@ Frontend:
   I was testing the limits of destructuring on this project after finding out that no matter how deeply nested an object gets, it can always be destructured. Some of it might be hard to read so look at the stucture of the data below to see it in its original form.
 
 ## Seed Script
-Example:
+Example:[
   {
     video_photo_carousel: [
       'https://gameinfocarousel.s3.us-east-2.amazonaws.com/game_genres/Strategy/image+(1).jpeg',
@@ -76,6 +78,7 @@ Example:
     developer: 'Towne - Schamberger',
     publisher: 'Carter LLC',
   }
+];
 
 ## Testing
 I used primiarly the react-testing-library for all of my tests. Using hooks with the Context API was limiting but using the data-testid attribute that comes with the library I was able to target components and elements and test their functionality. I used MSW (Mock Service Worker) to set up a mock server and test my request to the API. This allowed me to test my request without having to make an actual HTTP request.

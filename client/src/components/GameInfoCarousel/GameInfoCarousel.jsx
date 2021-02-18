@@ -58,13 +58,15 @@ const GameInfoCarousel = () => {
       cancelToken: source.token,
     })
       .then(({ data: { metaAndGameInfo, reviewsInfo } }) => {
-        const [imageCarousel,
+        const [
+          imageCarousel,
           genre,
           title,
           allHover,
           recentHover,
           allReview,
-          recentReview] = dataDestructuring(metaAndGameInfo, reviewsInfo);
+          recentReview,
+        ] = dataDestructuring(metaAndGameInfo, reviewsInfo);
 
         setBackgroundImage(imageCarousel[10]);
         setCarousel(imageCarousel.slice(0, 10));

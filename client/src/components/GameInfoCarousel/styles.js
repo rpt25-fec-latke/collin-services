@@ -33,22 +33,22 @@ export const MainGameInfoWrapper = styled.div`
   width: 50%;
   justify-content: center;
 
-
-  /* ::after {
-      content: "";
-      background-image: url("${(props) => props.backgroundImage}");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 80%;
-      border-radius: 100%;
-      position: absolute;
-      top: -30%;
-      right: -1%;
-      bottom: 0%;
-      left: -1%;
-      margin: 10% 20% -1%;
-      opacity: 0.1;
-  } */
+  ::before {
+    content: "";
+    background-image: url("${(props) => props.backgroundImage}");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1500px 1000px;
+    border-radius: 100%;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+    margin: 10% 20% -1%;
+    opacity: 0.07;
+  }
 
 `;
 
