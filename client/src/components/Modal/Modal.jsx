@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {
-  Container,
+  ModalContainer,
   Overlay,
   CloseOut,
   TopBar,
@@ -29,7 +29,7 @@ function Modal() {
   return (
     <>
       <Overlay showModal={showModal} onClick={() => setModal(false)} />
-      <Container showModal={showModal}>
+      <ModalContainer showModal={showModal}>
         <TopBar />
         <Header>
           <CloseOut onClick={() => setModal(false)}>X</CloseOut>
@@ -65,7 +65,7 @@ function Modal() {
             </TagWrapper>
           </ModalContentWrapper>
         </ModalContentBorder>
-      </Container>
+      </ModalContainer>
     </>
   );
 }

@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const GameInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   width: 100%;
   padding: 20px;
-  margin-top: 150px;
+  margin-top: 15px;
 
 `;
 
-export const Wrapper = styled.div`
+export const GameInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,11 +34,11 @@ export const MainGameInfoWrapper = styled.div`
   justify-content: center;
 
   ::before {
-    content: "";
-    background-image: url("${(props) => props.backgroundImage}");
+    /* content: ""; */
+    background: linear-gradient(to right, #2d4e61, #1b2839);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 1500px 1000px;
+    /* background-size: 1500px 1000px;
     border-radius: 100%;
     position: absolute;
     top: 50px;
@@ -47,12 +47,8 @@ export const MainGameInfoWrapper = styled.div`
     left: 0px;
     z-index: -1;
     margin: 10% 20% -1%;
-    opacity: 0.06;
+    opacity: 0.06; */
   }
-
-`;
-
-export const ImageCarouselWrapper = styled.div`
 
 `;
 

@@ -1,7 +1,8 @@
 const axios = require('axios');
 
 const getReviewsInfo = (gameId) => {
-  return axios.get(`http://204.236.178.72:3001/reviews?id=${gameId}`)
+  // 204.236.178.72
+  return axios.get(`http://localhost:3001/reviews?id=${gameId}`)
     .then((res) => {
       return res.data;
     })
@@ -11,7 +12,8 @@ const getReviewsInfo = (gameId) => {
 };
 
 const getMetaData = (gameId) => {
-  return axios.get(`http://3.131.140.35:3005/metadata?id=${gameId}`)
+  // 3.131.140.35
+  return axios.get(`http://localhost:3005/metadata?id=${gameId}`)
     .then((res) => {
       return res.data;
     })

@@ -17,7 +17,7 @@ app.use(morgan('dev'));
 app.use(express.static(path.resolve('client', 'dist')));
 
 app.get('/game_carousel_info', async (req, res) => {
-  const queryId = req.query ? req.query.id : 1;
+  const queryId = req.query.id || 1;
   if (queryId < 1 || queryId > 100) {
     res.sendStatus(500);
   }
@@ -44,7 +44,7 @@ app.get('/game_carousel_info', async (req, res) => {
 });
 
 app.get('/game_info/related', async (req, res) => {
-  const queryId = req.query ? req.query.id : 1;
+  const queryId = req.query.id || 1;
   if (queryId < 1 || queryId > 100) {
     res.sendStatus(500);
   }
@@ -60,7 +60,7 @@ app.get('/game_info/related', async (req, res) => {
 });
 
 app.get('/game_info/genre', (req, res) => {
-  const queryId = req.query ? req.query.id : 1;
+  const queryId = req.query.id || 1;
   if (queryId < 1 || queryId > 100) {
     res.sendStatus(500);
   }
@@ -76,7 +76,7 @@ app.get('/game_info/genre', (req, res) => {
 });
 
 app.get('/game_info/events', (req, res) => {
-  const queryId = req.query ? req.query.id : 1;
+  const queryId = req.query.id || 1;
   if (queryId < 1 || queryId > 100) {
     res.sendStatus(500);
   }

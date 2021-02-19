@@ -9,9 +9,8 @@ import dataDestructuring from './dataDestructuring';
 
 import {
   MainGameInfoWrapper,
-  Container,
-  Wrapper,
-  ImageCarouselWrapper,
+  GameInfoContainer,
+  GameInfoWrapper,
   SideInfoPanelWrapper,
   BackgroundWaterMark,
 } from './styles';
@@ -32,6 +31,7 @@ const GameInfoCarousel = () => {
   const [autoIterate, setAutoIterate] = useState(1);
   const [stopPicAutomation, setStopPicAuto] = useState(false);
   const queryId = window.location.search.slice(4);
+  document.body.style['background-image'] = `url(${backgroundImage})`;
 
   // SET TIMEOUT DISABLED
   // useEffect(() => {
@@ -68,7 +68,7 @@ const GameInfoCarousel = () => {
           recentReview,
         ] = dataDestructuring(metaAndGameInfo, reviewsInfo);
 
-        setBackgroundImage(imageCarousel[10]);
+        setBackgroundImage('https://cdn.akamai.steamstatic.com/steam/apps/292030/page_bg_generated_v6b.jpg?t=1607418742');
         setCarousel(imageCarousel.slice(0, 10));
         setMainImage(imageCarousel[0]);
         setGenre(genre);
@@ -111,24 +111,24 @@ const GameInfoCarousel = () => {
     >
       {(sidePanelInfo.game_id && images.length)
         ? (
-          <Container backgroundImage={backgroundImage}>
+          <GameInfoContainer backgroundImage={backgroundImage}>
             <Modal />
-            <Wrapper>
+            <GameInfoWrapper>
               <Header />
               <BackgroundWaterMark>
                 <MainGameInfoWrapper backgroundImage={backgroundImage}>
                   <>
-                    <ImageCarouselWrapper data-testid="images-rendering">
+                    <div data-testid="images-rendering">
                       <ImageCarousel />
-                    </ImageCarouselWrapper>
+                    </div>
                     <SideInfoPanelWrapper>
                       <SideInfoPanel />
                     </SideInfoPanelWrapper>
                   </>
                 </MainGameInfoWrapper>
               </BackgroundWaterMark>
-            </Wrapper>
-          </Container>
+            </GameInfoWrapper>
+          </GameInfoContainer>
         ) : <div data-testid="loading" /> }
     </GamesContext.Provider>
   );

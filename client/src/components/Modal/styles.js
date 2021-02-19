@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const ModalContainer = styled.div`
   display: ${({ showModal }) => { return showModal ? 'flex' : 'none'; }};
   flex-direction: column;
   max-width: 1881px;
