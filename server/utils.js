@@ -1,10 +1,11 @@
 const combineData = (gameInfo, metaData) => {
   const [infoObj] = gameInfo;
-  infoObj.game_title = metaData[4][0];
-  infoObj.developer = metaData[4][2];
-  infoObj.publisher = metaData[4][3];
-  infoObj.release_date = metaData[4][5];
-  return infoObj;
+  const objPropMutation = JSON.parse(JSON.stringify(infoObj));
+  objPropMutation.game_title = metaData[4][0];
+  objPropMutation.developer = metaData[4][2];
+  objPropMutation.publisher = metaData[4][3];
+  objPropMutation.release_date = metaData[4][5];
+  return objPropMutation;
 };
 
 const reviewsFailedToLoad = () => (

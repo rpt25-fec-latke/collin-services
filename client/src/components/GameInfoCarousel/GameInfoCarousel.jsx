@@ -61,17 +61,19 @@ const GameInfoCarousel = () => {
       cancelToken: source.token,
     })
       .then(({ data: { metaAndGameInfo, reviewsInfo } }) => {
+        console.log(metaAndGameInfo);
         const [
           imageCarousel,
           genre,
           title,
+          backgroundImg,
           allHover,
           recentHover,
           allReview,
           recentReview,
         ] = dataDestructuring(metaAndGameInfo, reviewsInfo);
 
-        setBackgroundImage('https://cdn.akamai.steamstatic.com/steam/apps/292030/page_bg_generated_v6b.jpg?t=1607418742');
+        setBackgroundImage(backgroundImg);
         setCarousel(imageCarousel.slice(0, 10));
         setMainImage(imageCarousel[0]);
         setGenre(genre);

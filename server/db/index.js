@@ -17,12 +17,9 @@ const gameCarouselInfo = new mongoose.Schema({
     unique: true,
   },
   genre: String,
-  game_title: String,
+  background_image: String,
   video_photo_carousel: Array,
   short_description: String,
-  release_date: Date,
-  developer: String,
-  publisher: String,
   popular_tags: Array,
 },
 { collection: 'gameCarouselInfo' });

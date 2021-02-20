@@ -2,6 +2,7 @@ const dataDestructuring = (metaAndGameInfo, reviewsInfo) => {
   const { video_photo_carousel: imageCarousel } = metaAndGameInfo;
   const { genre } = metaAndGameInfo;
   const { game_title: title } = metaAndGameInfo;
+  const { background_image: backgroundImg } = metaAndGameInfo;
   const {
     reviewStats:
       { overallReviewsRatingGroupHoverMessage: allHover },
@@ -22,7 +23,16 @@ const dataDestructuring = (metaAndGameInfo, reviewsInfo) => {
         recentRatingGroup: { ratingGroup: recentReview },
       },
   } = reviewsInfo;
-  return [imageCarousel, genre, title, allHover, recentHover, allReview, recentReview];
+  return [
+    imageCarousel,
+    genre,
+    title,
+    backgroundImg,
+    allHover,
+    recentHover,
+    allReview,
+    recentReview,
+  ];
 };
 
 export default dataDestructuring;

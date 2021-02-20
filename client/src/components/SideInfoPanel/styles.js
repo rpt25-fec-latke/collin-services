@@ -18,9 +18,11 @@ export const ShortDescription = styled.p`
   text-align: start;
   line-height: 18px;
   width: 324px;
+  height: 75px;
   letter-spacing: normal;
   color: #c6d4df;
   margin: 0px 10px 8px;
+  overflow-y: hidden;
 `;
 
 export const ReviewWrapper = styled.div`
