@@ -30,8 +30,6 @@ const GameInfoCarousel = () => {
   const [showModal, setModal] = useState(false);
   const [autoIterate, setAutoIterate] = useState(1);
   const [stopPicAutomation, setStopPicAuto] = useState(false);
-  const queryId = window.location.search.slice(4);
-  document.body.style['background-image'] = `url(${backgroundImage})`;
 
   // SET TIMEOUT DISABLED
   // useEffect(() => {
@@ -51,6 +49,11 @@ const GameInfoCarousel = () => {
   // }, [mainImage, autoIterate]);
 
   useEffect(() => {
+    document.body.style['background-image'] = `url(${backgroundImage})`;
+  }, [gameGenre]);
+
+  useEffect(() => {
+    const queryId = window.location.search.slice(4);
     const currentId = queryId || gameId;
     setGameId(currentId);
     const source = axios.CancelToken.source();
