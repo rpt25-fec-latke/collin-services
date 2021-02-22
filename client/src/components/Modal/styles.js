@@ -14,7 +14,7 @@ export const ModalContainer = styled.div`
   box-shadow: 0 2px 8px 3px;
   font-family: "Motiva Sans", Sans-serif;
   font-weight: normal;
-  z-index: 1;
+  z-index: 1000;
 `;
 
 export const TopBar = styled.div`

@@ -7,6 +7,7 @@ export const GameInfoContainer = styled.div`
   height: 100%;
   width: 100%;
   padding: 20px;
+  margin-left: -18px;
   margin-top: 15px;
 
 `;
@@ -15,6 +16,7 @@ export const GameInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
 `;
 
 export const BackgroundWaterMark = styled.div`
@@ -24,6 +26,7 @@ export const BackgroundWaterMark = styled.div`
   background-position: bottom;
   background-repeat: no-repeat;
   min-width: 895px;
+  width: 940px;
   max-width: 45%;
 `;
 

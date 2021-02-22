@@ -1,0 +1,327 @@
+/* TOP NAV */
+#header {
+	padding-left: 16px;
+	padding-right: 16px;
+  background: #171a21;
+	background-position: center top;
+	min-width: 940px;
+  font-family: "Motiva Sans", Sans-serif;
+  font-weight: normal; /* normal */
+  font-size: 14px;
+}
+
+#header .content {
+	background: #171a21;
+	position: relative;
+	width: 940px;
+	height: 104px;
+	margin: 0px auto;
+	z-index: 402;
+}
+#header div.logo {
+	float: left;
+	padding-top: 30px;
+	margin-right: 40px;
+	width: 176px;
+	height: 44px;
+}
+
+#header .menuitem {
+	display: block;
+	position: relative;
+	padding-top: 45px;
+	padding-left: 7px;
+	padding-right: 7px;
+	padding-bottom: 7px;
+	line-height: 16px;
+	float: left;
+	font-size: 14px;
+	color: #b8b6b4;
+	text-transform: uppercase;
+}
+
+#header .menuitem:hover {
+	color: #ffffff;
+	text-decoration: none;
+  cursor: pointer;
+}
+
+#actions {
+	position: absolute;
+	right: 0px;
+	top: 6px;
+	height: 21px;
+	line-height: 21px;
+	color: #b8b6b4;
+	font-size: 11px;
+	padding: 0 4px;
+	line-height: 24px;
+	vertical-align: top;
+	display: inline-block;
+	margin-left: 3px;
+	z-index: 401;
+}
+
+#actions .action_link:hover {
+	text-decoration: none;
+	color: #ffffff;
+  cursor: pointer;
+}
+
+.header_installsteam_btn {
+	background-color: #5c7e10;
+	display: inline-block;
+	position: relative;
+	height: 21px;
+	line-height: 24px;
+	margin-right: 3px;
+}
+
+.header_installsteam_btn_content {
+	display: inline-block;
+	padding-left: 35px;
+	padding-right: 9px;
+	background-position: 10px 5px;
+	background-image: url( 'https://store.akamai.steamstatic.com/public/shared/images/header/btn_header_installsteam_download.png?v=1' );
+	background-repeat:	no-repeat;
+	text-decoration: none;
+	color: #e5e4dc;
+	font-weight: normal;
+}
+
+.header_installsteam_btn_content:hover {
+	text-decoration: none;
+	color: #ffffff;
+  cursor: pointer;
+}
+
+
+
+/* SUB NAV */
+#sub_header .content {
+	background: transparent;
+	position: relative;
+	width: 940px;
+	margin: 0 auto;
+	z-index: 300;
+}
+
+#sub_header, #sub_header .content {
+	height: 66px;
+}
+
+#sub_nav_area {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 24px;
+	height: 49px;
+}
+
+#sub_nav_area .sub_nav_bg {
+	height: 35px;
+	margin: 7px 0;
+	background: rgba( 103, 193, 245, 0.4 );
+
+}
+
+.sub_nav .tab > span.pulldown > span {
+	width: 19px;
+	height: 16px;
+	padding: 0;
+	display: inline-block;
+	background-image: url( 'https://store.akamai.steamstatic.com/public/shared/images/popups/btn_arrow_down_padded.png' );
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	vertical-align: text-bottom;
+}
+
+.sub_nav .tab:hover > span.pulldown > span {
+    background-image: url( 'https://store.akamai.steamstatic.com/public/shared/images/popups/btn_arrow_down_padded.png' );
+}
+
+#sub_nav_area .sub_nav_bg {
+	background: rgba( 62, 126, 167, 0.8);
+	box-shadow: 0 0 3px rgba( 0, 0, 0, 0.4);
+}
+
+.sub_nav .tab {
+	border-right: 1px solid rgba( 16, 21, 25, 0.3);
+}
+
+.sub_nav .tab > span {
+	color: #ffffff;
+	font-size: 13px;
+	line-height: 34px;
+	text-shadow: -1px -1px 0px rgba( 0, 0, 0, 0.25 );
+		font-family: "Motiva Sans", Sans-serif;
+		font-weight: 300; /* light */
+
+		}
+
+
+.sub_nav .tab {
+	float: left;
+	border-right: 1px solid #000000;
+	cursor: pointer;
+	padding: 1px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.sub_nav .tab > span {
+	font-size: 12px;
+	color: #ffffff;
+	line-height: 33px;
+	padding: 0 15px;
+	display: block;
+}
+
+.sub_nav .tab:hover > span{
+	filter: none;
+	color: black;
+	background: #ffffff;
+}
+
+div#store_search {
+	display: flex;
+	align-items: center;
+	float: right;
+	padding: 3px 4px 2px;
+	height: 30px;
+}
+
+a#store_search_link {
+	position: absolute;
+	right: 2px;
+	top: 0;
+}
+
+a#store_search_link img {
+	width: 24px;
+	height: 27px;
+}
+
+.searchbox input {
+	border: none;
+	background-color: transparent;
+	color: #eeeeee;
+	margin-top: 2px;
+	margin-left: 8px;
+	width: 180px;
+	outline: none;
+	line-height: 26px;
+}
+
+.searchbox input.default {
+	font-style: italic;
+    color: #305d8a;
+}
+
+.searchbox input:focus::placeholder {
+	color: transparent;
+}
+
+.searchbox {
+	background-image: none;
+	background-color: #316282;
+	border-radius: 3px;
+	border: 1px solid rgba( 0, 0, 0, 0.3);
+	box-shadow: 1px 1px 0px rgba( 255, 255, 255, 0.2);
+	color: #fff;
+	margin-bottom: 0px;
+	outline: none;
+	height: 27px;
+	padding: 0px 6px;
+}
+.searchbox:hover {
+	background-image: none;
+	border: 1px solid #4c9acc;
+	box-shadow: 1px 1px 0px rgba( 255, 255, 255, 0.0);
+}
+.searchbox input.default {
+	color: #0e1c25;
+	font-size: 14px;
+	margin-top: 1px;
+	text-shadow: 1px 1px 0px rgba( 255, 255, 255, 0.1);
+	font-family: "Motiva Sans", Sans-serif;
+	font-weight: 300; /* light */
+
+	}
+.searchbox input::placeholder {
+	color: #0e1c25;
+}
+
+.default {
+	font-size: 18px;
+	color: #fff;
+	font-family: "Motiva Sans", Sans-serif;
+	font-weight: 200; /* thin */
+
+}
+
+a#store_search_link {
+	position: absolute;
+	right: 2px;
+	top: 0;
+}
+
+a#store_search_link img {
+	width: 24px;
+	height: 27px;
+}
+
+.searchbox {
+	color: #a6a5a2;
+	width: 216px;
+	height: 30px;
+	position: relative;
+	z-index: 150;
+	cursor: text;
+}
+
+
+a#store_search_link img {
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	top: 1px;
+	right: -1px;
+	background-image: url('https://store.akamai.steamstatic.com/public/images/v6/search_icon_btn.png');
+}
+
+a#store_search_link img:hover {
+	background-image: url('https://store.akamai.steamstatic.com/public/images/v6/search_icon_btn.png');
+}
+
+
+
+/* Sign In Bar */
+.sign_in_ctn {
+	width: 940px;
+	background: rgba( 0, 0, 0, 0.13 );
+	margin: -20px auto;
+	margin-bottom: 16px;
+}
+.sign_in_actions_ctn {
+	padding: 25px 16px 16px;
+
+}
+.sign_in_actions_ctn {
+	margin-bottom: 4px;
+	color: #c6d4df;
+	font-size: 12px;
+	text-align: start;
+	line-height: normal;
+	letter-spacing: normal;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.sign_in_link {
+	color: #ffffff;
+}
+.sign_in_link:hover {
+	cursor: pointer;
+	color: #66c0f4;
+	text-decoration: none;
+}

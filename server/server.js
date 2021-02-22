@@ -45,6 +45,7 @@ app.get('/game_carousel_info', async (req, res) => {
 
 app.get('/game_info/related', async (req, res) => {
   const queryId = req.query.id || 1;
+  console.log(queryId);
   if (queryId < 1 || queryId > 100) {
     res.sendStatus(500);
   }
