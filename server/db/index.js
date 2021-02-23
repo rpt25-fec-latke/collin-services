@@ -16,30 +16,17 @@ const gameCarouselInfo = new mongoose.Schema({
     type: Number,
     unique: true,
   },
-  category_tree: {
-    genres: {
-      genre_name: Array,
-    },
-  },
   genre: String,
-  game_title: String,
+  background_image: String,
   video_photo_carousel: Array,
-  game_photo: String,
   short_description: String,
-  recent_reviews: String,
-  recent_reviews_count: Number,
-  all_reviews: String,
-  all_reviews_count: Number,
-  release_date: Date,
-  developer: String,
-  publisher: String,
   popular_tags: Array,
 },
 { collection: 'gameCarouselInfo' });
 
 const GameCarouselInfo = mongoose.model('GameCarouselInfo', gameCarouselInfo);
 
-const getInfo = async (gameId, callback) => {
+const getInfo = (gameId, callback) => {
   GameCarouselInfo.find({ game_id: gameId }, (err, gameData) => {
     if (err || !gameData.length) {
       callback(err || new Error('invalid query'));
@@ -49,7 +36,27 @@ const getInfo = async (gameId, callback) => {
   }).exec();
 };
 
+const getRelatedInfo = async (gameId) => {
+  const [{ genre }] = await GameCarouselInfo.find({ game_id: gameId }).exec();
+  const [, ...relatedGames] = await GameCarouselInfo.find({ genre }).limit(8).exec();
+  return relatedGames;
+};
+
+const getGenre = async (gameId) => {
+  const [{ genre }] = await GameCarouselInfo.find({ game_id: gameId }).exec();
+  return genre;
+};
+
+const getEventsPhotos = async (gameId) => {
+  const [{ video_photo_carousel: [pic1, pic2] }] = await
+  GameCarouselInfo.find({ game_id: gameId }).exec();
+  return [pic1, pic2];
+};
+
 module.exports = {
   GameCarouselInfo,
   getInfo,
+  getEventsPhotos,
+  getGenre,
+  getRelatedInfo,
 };

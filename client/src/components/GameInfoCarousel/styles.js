@@ -1,20 +1,22 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const GameInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   width: 100%;
   padding: 20px;
-  margin-top: 150px;
+  margin-left: -18px;
+  margin-top: 15px;
 
 `;
 
-export const Wrapper = styled.div`
+export const GameInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
 `;
 
 export const BackgroundWaterMark = styled.div`
@@ -24,6 +26,7 @@ export const BackgroundWaterMark = styled.div`
   background-position: bottom;
   background-repeat: no-repeat;
   min-width: 895px;
+  width: 940px;
   max-width: 45%;
 `;
 
@@ -33,26 +36,22 @@ export const MainGameInfoWrapper = styled.div`
   width: 50%;
   justify-content: center;
 
-
-  /* ::after {
-      content: "";
-      background-image: url("${(props) => props.backgroundImage}");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 80%;
-      border-radius: 100%;
-      position: absolute;
-      top: -30%;
-      right: -1%;
-      bottom: 0%;
-      left: -1%;
-      margin: 10% 20% -1%;
-      opacity: 0.1;
-  } */
-
-`;
-
-export const ImageCarouselWrapper = styled.div`
+  ::before {
+    /* content: ""; */
+    background: linear-gradient(to right, #2d4e61, #1b2839);
+    background-repeat: no-repeat;
+    background-position: center;
+    /* background-size: 1500px 1000px;
+    border-radius: 100%;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+    margin: 10% 20% -1%;
+    opacity: 0.06; */
+  }
 
 `;
 

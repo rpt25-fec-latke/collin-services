@@ -27,6 +27,7 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     alias: {},
   },
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: DIST_DIR,
     port: 8080,

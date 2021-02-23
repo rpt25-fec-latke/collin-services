@@ -2,4 +2,4 @@ node_modules
 .DS_Store
 .env
 gameInfoCarouselBundle.js
-client/src/components/reducers
+*.pem

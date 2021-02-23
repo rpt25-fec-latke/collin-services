@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
+import moment from 'moment';
 import {
   SidePanelImg,
   ShortDescription,
-  Container,
+  SidePanelContainer,
   ReviewInfo,
   ReviewWrapper,
   OverallReview,
@@ -25,8 +26,9 @@ const SideInfoPanel = () => {
     recentReviews,
     allReviews,
   } = useContext(GamesContext);
+
   return (
-    <Container>
+    <SidePanelContainer>
       <SidePanelImg src={sidePanelImg} />
       <ShortDescription>{sidePanelInfo.short_description}</ShortDescription>
       <ReviewWrapper data-testid="recentReview">
@@ -56,8 +58,11 @@ const SideInfoPanel = () => {
       <ReleaseDateWrapper>
         <ReleaseInfo>Release Date:</ReleaseInfo>
         <ReleaseDate>
-          {sidePanelInfo.release_date
-          && sidePanelInfo.release_date.slice(0, 10)}
+          {
+            !sidePanelInfo.release_date
+              ? ''
+              : moment(new Date(sidePanelInfo.release_date)).format('MMM D, YYYY')
+          }
         </ReleaseDate>
       </ReleaseDateWrapper>
       <ReviewWrapper>
@@ -88,7 +93,7 @@ const SideInfoPanel = () => {
           <Tag data-testid="modalTag" onClick={() => setModal(true)}>+</Tag>
         </TagList>
       </TagsWrapper>
-    </Container>
+    </SidePanelContainer>
   );
 };
 
