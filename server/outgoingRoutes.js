@@ -13,7 +13,7 @@ const getReviewsInfo = (gameId) => {
 
 const getMetaData = (gameId) => {
   // 3.131.140.35
-  return axios.get(`http://localhost:3005/metadata?id=${gameId}`)
+  return axios.get(`http://3.131.140.35:3005/metadata?id=${gameId}`)
     .then((res) => {
       return res.data;
     })
