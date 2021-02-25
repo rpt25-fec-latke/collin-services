@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
   body {
-    /* background-image: url('https://cdn.akamai.steamstatic.com/steam/apps/292030/page_bg_generated_v6b.jpg?t=1607418742'); */
     background-color: #1b2837;
     background-repeat: no-repeat;
     background-position: top;

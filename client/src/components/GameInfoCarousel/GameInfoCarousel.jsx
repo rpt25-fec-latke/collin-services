@@ -31,25 +31,28 @@ const GameInfoCarousel = () => {
   const [autoIterate, setAutoIterate] = useState(1);
   const [stopPicAutomation, setStopPicAuto] = useState(false);
 
-  // SET TIMEOUT DISABLED
-  // useEffect(() => {
-  //   if (images[autoIterate] === undefined) {
-  //     setAutoIterate(0);
-  //   }
-  //   let picTraverse;
-  //   if (!stopPicAutomation) {
-  //     picTraverse = setTimeout(() => {
-  //       setMainImage(images[autoIterate]);
-  //       setAutoIterate(autoIterate + 1);
-  //     }, 4000);
-  //   }
-  //   return () => {
-  //     clearTimeout(picTraverse);
-  //   };
-  // }, [mainImage, autoIterate]);
+  // SET TIMEOUT
+  useEffect(() => {
+    if (images[autoIterate] === undefined) {
+      setAutoIterate(0);
+    }
+    let picTraverse;
+    if (!stopPicAutomation) {
+      picTraverse = setTimeout(async () => {
+        if (mainImage) {
+          setMainImage(images[autoIterate]);
+        }
+        setAutoIterate(autoIterate + 1);
+      }, 4000);
+    }
+    return () => {
+      clearTimeout(picTraverse);
+    };
+  }, [stopPicAutomation, autoIterate]);
 
   useEffect(() => {
     document.body.style['background-image'] = `url(${backgroundImage})`;
+    document.body.style['background-repeat'] = 'no-repeat';
   }, [gameGenre]);
 
   useEffect(() => {
