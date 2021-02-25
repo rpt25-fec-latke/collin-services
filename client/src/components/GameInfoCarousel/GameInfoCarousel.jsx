@@ -31,7 +31,7 @@ const GameInfoCarousel = () => {
   const [autoIterate, setAutoIterate] = useState(1);
   const [stopPicAutomation, setStopPicAuto] = useState(false);
 
-  // SET TIMEOUT DISABLED
+  // SET TIMEOUT
   useEffect(() => {
     if (images[autoIterate] === undefined) {
       setAutoIterate(0);
@@ -46,7 +46,6 @@ const GameInfoCarousel = () => {
       }, 4000);
     }
     return () => {
-      console.log('clear');
       clearTimeout(picTraverse);
     };
   }, [stopPicAutomation, autoIterate]);
