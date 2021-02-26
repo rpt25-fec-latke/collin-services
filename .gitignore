@@ -1,7 +1,5 @@
 node_modules
 .DS_Store
 .env
-main.infoCarouselBundle.js
-vendor.infoCarouselBundle.js
-vendor.infoCarouselBundle.js.LICENSE.txt
+dist
 *.pem
