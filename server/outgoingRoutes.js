@@ -2,7 +2,7 @@ const axios = require('axios');
 
 const getReviewsInfo = (gameId) => {
   // 204.236.178.72
-  return axios.get(`http://localhost:3001/reviews?id=${gameId}`)
+  return axios.get(`http://204.236.178.72:3001/reviews?id=${gameId}`)
     .then((res) => {
       return res.data;
     })
