@@ -12,7 +12,7 @@
     "start-dev": "nodemon server/express-dev-server.js",
     "test": "jest --detectOpenHandles --testPathIgnorePatterns server/backend-tests",
     "seed": "node ./server/db/seedscript.js",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "dev-server": "webpack serve"
   },
   "dependencies": {
@@ -31,6 +31,7 @@
     "react-router-dom": "^5.2.0",
     "regenerator-runtime": "^0.13.7",
     "styled-components": "^5.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^5.17.0",
     "webpack-dev-middleware": "^4.1.0",
     "webpack-hot-middleware": "^2.25.0",
@@ -41,12 +42,16 @@
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@gfx/zopfli": "^1.0.15",
     "@shelf/jest-mongodb": "^1.2.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/react-hooks": "^5.0.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.12.0",
+    "brotli-gzip-webpack-plugin": "^0.5.0",
+    "brotli-webpack-plugin": "^1.1.0",
+    "compression-webpack-plugin": "^7.1.2",
     "css-loader": "^5.0.1",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -59,6 +64,7 @@
     "react-hot-loader": "^4.13.0",
     "style-loader": "^2.0.0",
     "supertest": "^6.1.1",
+    "webpack-bundle-analyzer": "^4.4.0",
     "webpack-cli": "^4.3.1",
     "webpack-dev-server": "^3.11.2"
   }
