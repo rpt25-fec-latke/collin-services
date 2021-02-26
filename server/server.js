@@ -17,7 +17,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(compression());
-app.use(express.static(path.resolve('client', 'public')));
+app.use(express.static(path.resolve('client', 'dist')));
 
 app.get('/game_carousel_info', async (req, res) => {
   const queryId = req.query.id || 1;

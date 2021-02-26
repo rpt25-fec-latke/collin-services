@@ -1,7 +1,10 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const S3Plugin = require('webpack-s3-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack');
+require('dotenv').config();
 
-const DIST_DIR = path.resolve(__dirname, 'client', 'public');
+const DIST_DIR = path.resolve(__dirname, 'client', 'dist');
 
 module.exports = {
   mode: 'development',
@@ -36,14 +39,18 @@ module.exports = {
     open: true,
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(
-        __dirname,
-        'client',
-        'public',
-        'index.html',
-      ),
-      title: 'Steam',
+    new S3Plugin({
+      s3Options: {
+        exclude: /.*\.(html|txt)/,
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        region: 'us-east-2',
+      },
+      s3UploadOptions: {
+        Bucket: 'steam-bundles',
+      },
     }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new UglifyJSPlugin(),
   ],
 };
