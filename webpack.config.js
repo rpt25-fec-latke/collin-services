@@ -1,5 +1,5 @@
 const path = require('path');
-// const S3Plugin = require('webpack-s3-plugin');
+const S3Plugin = require('webpack-s3-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
 require('dotenv').config();
@@ -39,17 +39,17 @@ module.exports = {
     open: true,
   },
   plugins: [
-    // new S3Plugin({
-    //   s3Options: {
-    //     exclude: /.*\.(html|txt)/,
-    //     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    //     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    //     region: 'us-east-2',
-    //   },
-    //   s3UploadOptions: {
-    //     Bucket: 'steam-bundles',
-    //   },
-    // }),
+    new S3Plugin({
+      s3Options: {
+        exclude: /.*\.(html|txt)/,
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        region: 'us-east-2',
+      },
+      s3UploadOptions: {
+        Bucket: 'steam-bundles',
+      },
+    }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new UglifyJSPlugin(),
   ],
