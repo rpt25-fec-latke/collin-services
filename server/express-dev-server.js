@@ -7,7 +7,7 @@ require('dotenv').config();
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('../webpack.config.js');
+const config = require('../webpack.dev.js');
 
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.entry.unshift('webpack-hot-middleware/client');

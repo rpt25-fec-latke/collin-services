@@ -25,13 +25,13 @@ From within the root directory:
 1.) npm install
 2.) npm run seed
 3.) npm start (run server)
-4.) npm run build (build bundle)
+4.) npm run dev (build dev bundle)
 
 ## Development
 
 Backend:
   This service is dependent on the Reviews API and the Metadata API so I created 'failed to load' placeholder data just in case there is a probelm connecting to them.
-  SIDE NOTE --- Created a dev server (express-dev-server) to run on PORT 3008 and refresh on save but unfortunately does not work with styled components.
+  SIDE NOTE --- Created a dev server (express-dev-server) to run on PORT 3008 and refresh on save but unfortunately does not work with styled components, so can be disregarded.
 
 Frontend:
   I'm using primarily React Hooks in conjunction with the Context API. If unfamiliar with hooks, the useState hook is used to store state and set state. The useEffect hook is used similarly to componentDidMount and componentDidUpdate in React. The Context API works in a similar way to Redux in that you have a global state in which you no longer have to pass down state or functions to components. Notice how the Context Provider is wrapping around the component tree.
@@ -72,11 +72,7 @@ Example:[
     ],
     game_id: 1,
     genre: 'Strategy',
-    game_title: 'Tasty Steel Bike',
-    short_description: 'Repellendus nostrum sint magni eaque officia eius illo.',
-    release_date: '2017-02-21T01:57:15.469Z',
-    developer: 'Towne - Schamberger',
-    publisher: 'Carter LLC',
+    short_description: 'Repellendus nostrum sint magni eaque officia eius illo',
   }
 ];
 

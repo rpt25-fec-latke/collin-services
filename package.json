@@ -12,8 +12,8 @@
     "start-dev": "nodemon server/express-dev-server.js",
     "test": "jest --detectOpenHandles --testPathIgnorePatterns server/backend-tests",
     "seed": "node ./server/db/seedscript.js",
-    "build": "webpack",
-    "dev": "webpack -w",
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack -w --config webpack.dev.js",
     "dev-server": "webpack serve"
   },
   "dependencies": {

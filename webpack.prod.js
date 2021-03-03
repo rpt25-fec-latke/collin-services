@@ -29,14 +29,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
-    alias: {},
-  },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: DIST_DIR,
-    port: 8080,
-    hot: true,
-    open: true,
   },
   plugins: [
     new S3Plugin({
