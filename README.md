@@ -2,8 +2,9 @@
 
 > An information section that includes images from the game, a brief description, tags related to the game and other specs.
 
-## Related Projects
+## Dependent Projects
 reviews section - https://github.com/rpt25-fec-latke/tyler-services
+meta data sidebar - https://github.com/rpt25-fec-latke/dwayne-services
 
 ## Table of Contents
 
