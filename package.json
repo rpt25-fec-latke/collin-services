@@ -10,7 +10,7 @@
   "scripts": {
     "start": "nodemon server/initialize.js",
     "start-dev": "nodemon server/express-dev-server.js",
-    "test": "jest --detectOpenHandles --testPathIgnorePatterns server/backend-tests",
+    "test": "jest --detectOpenHandles",
     "seed": "node ./server/db/seedscript.js",
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack -w --config webpack.dev.js",
